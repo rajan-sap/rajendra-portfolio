@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rajendra Sapkota - AI Research Engineer Portfolio</title>
+    <meta name="description" content="AI Research Engineer & Team Leader - Portfolio showcasing machine learning, deep learning, and data science projects">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header/Navigation -->
+    <header class="header" id="header">
+        <nav class="nav container">
+            <div class="nav__logo">
+                <a href="#home">RS</a>
+            </div>
+            
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li class="nav__item">
+                        <a href="#home" class="nav__link active-link">Home</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#experience" class="nav__link">Experience</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#skills" class="nav__link">Skills</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#projects" class="nav__link">Projects</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#contact" class="nav__link">Contact</a>
+                    </li>
+                </ul>
+                
+                <div class="nav__close" id="nav-close">
+                    <i class="fas fa-times"></i>
+                </div>
+            </div>
+            
+            <!-- Theme toggle button -->
+            <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+                <i class="fas fa-moon" id="theme-toggle-icon"></i>
+            </button>
+            
+            <div class="nav__toggle" id="nav-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Left Navigation (appears on scroll) -->
+    <nav class="left-nav" id="left-nav">
+        <div class="left-nav__container">
+            <div class="left-nav__logo">
+                <a href="#home">RS</a>
+            </div>
+            <ul class="left-nav__list">
+                <li class="left-nav__item">
+                    <a href="#home" class="left-nav__link" title="Home & About">
+                        <i class="fas fa-home"></i>
+                    </a>
+                </li>
+                <li class="left-nav__item">
+                    <a href="#experience" class="left-nav__link" title="Experience">
+                        <i class="fas fa-briefcase"></i>
+                    </a>
+                </li>
+                <li class="left-nav__item">
+                    <a href="#skills" class="left-nav__link" title="Skills">
+                        <i class="fas fa-cogs"></i>
+                    </a>
+                </li>
+                <li class="left-nav__item">
+                    <a href="#projects" class="left-nav__link" title="Projects">
+                        <i class="fas fa-folder-open"></i>
+                    </a>
+                </li>
+                <li class="left-nav__item">
+                    <a href="#contact" class="left-nav__link" title="Contact">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="main">
+        <!-- Hero/About Combined Section -->
+        <section class="hero section" id="home">
+            <div class="section-container">
+                <div class="hero__container container">
+                    <div class="hero__content">
+                        <!-- Mobile: Image first, Desktop: Text first -->
+                        <div class="hero__image hero__image--mobile">
+                            <div class="hero__image-container">
+                                <div class="hero__image-border">
+                                    <img src="rajan.jpg" alt="Rajendra Sapkota - AI Research Engineer" class="hero__img">
+                                </div>
+                                <div class="hero__image-overlay"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="hero__data">
+                            <!-- Mobile: Info cards after image -->
+                            <div class="hero__info hero__info--mobile">
+                                <a href="#contact" class="hero__info-item" onclick="showLocationInfo(event)">
+                                    <i class="fas fa-map-marker-alt hero__icon"></i>
+                                    <div>
+                                        <span class="hero__info-title">Location</span>
+                                        <span class="hero__info-subtitle">Kristiansand, Norway</span>
+                                    </div>
+                                </a>
+                                
+                                <a href="#experience" class="hero__info-item" onclick="showEducationInfo(event)">
+                                    <i class="fas fa-graduation-cap hero__icon"></i>
+                                    <div>
+                                        <span class="hero__info-title">Education</span>
+                                        <span class="hero__info-subtitle">Ph.D. Research Fellow</span>
+                                    </div>
+                                </a>
+                                
+                                <a href="#experience" class="hero__info-item" onclick="showExperienceInfo(event)">
+                                    <i class="fas fa-briefcase hero__icon"></i>
+                                    <div>
+                                        <span class="hero__info-title">Experience</span>
+                                        <span class="hero__info-subtitle">5+ years in AI/ML</span>
+                                    </div>
+                                </a>
+                            </div>
+                            
+                            <span class="hero__greeting">Hello, I'm</span>
+                            <h1 class="hero__name">Rajendra Sapkota</h1>
+                            <h3 class="hero__profession">AI Research Engineer</h3>
+                            <p class="hero__description">
+                                I'm an AI Research Engineer and Team Leader with 5+ years of experience specializing in machine learning, 
+                                deep learning, and data science. I have a strong command of the end-to-end AI/ML stack within computer vision 
+                                as well as cutting-edge AI solutions with LLM, RAG, and MCP. I'm passionate about transforming and understanding 
+                                data to deliver actionable insights that solve real-world business challenges.
+                            </p>
+                            
+                            <!-- Desktop: Info cards in text section -->
+                            <div class="hero__info hero__info--desktop">
+                                <a href="#contact" class="hero__info-item" onclick="showLocationInfo(event)">
+                                    <i class="fas fa-map-marker-alt hero__icon"></i>
+                                    <div>
+                                        <span class="hero__info-title">Location</span>
+                                        <span class="hero__info-subtitle">Kristiansand, Norway</span>
+                                    </div>
+                                </a>
+                                
+                                <a href="#experience" class="hero__info-item" onclick="showEducationInfo(event)">
+                                    <i class="fas fa-graduation-cap hero__icon"></i>
+                                    <div>
+                                        <span class="hero__info-title">Education</span>
+                                        <span class="hero__info-subtitle">Ph.D. Research Fellow</span>
+                                    </div>
+                                </a>
+                                
+                                <a href="#experience" class="hero__info-item" onclick="showExperienceInfo(event)">
+                                    <i class="fas fa-briefcase hero__icon"></i>
+                                    <div>
+                                        <span class="hero__info-title">Experience</span>
+                                        <span class="hero__info-subtitle">5+ years in AI/ML</span>
+                                    </div>
+                                </a>
+                            </div>
+                            
+                            <div class="hero__buttons">
+                                <a href="#projects" class="button hero__button">View My Work</a>
+                                <a href="#contact" class="button button--outline">Get In Touch</a>
+                                <a href="#" onclick="showDownloadMessage()" class="button button--secondary">
+                                    <i class="fas fa-download"></i>
+                                    Download CV
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <!-- Desktop: Image on the right -->
+                        <div class="hero__image hero__image--desktop">
+                            <div class="hero__image-container">
+                                <div class="hero__image-border">
+                                    <img src="rajan.jpg" alt="Rajendra Sapkota - AI Research Engineer" class="hero__img">
+                                </div>
+                                <div class="hero__image-overlay"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Background Effects -->
+                <div class="hero__bg-effects">
+                    <div class="hero__shape hero__shape-1"></div>
+                    <div class="hero__shape hero__shape-2"></div>
+                    <div class="hero__shape hero__shape-3"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section class="experience section" id="experience">
+            <div class="section-container">
+            <div class="container">
+                <h2 class="section__title">Experience</h2>
+                <span class="section__subtitle">My Professional Journey</span>
+                
+                <div class="experience__container">
+                    <div class="experience__content">
+                        <div class="experience__data">
+                            <div>
+                                <h3 class="experience__title">Ph.D. Research Fellow</h3>
+                                <span class="experience__subtitle">UiT, The Arctic University of Norway</span>
+                                <div class="experience__calendar">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    Dec 2019 - Dec 2024
+                                </div>
+                                <p class="experience__description">
+                                    Conducted advanced research in deep learning for atmospheric science. Implemented lightweight CNN architectures 
+                                    and developed explainability methods for noctilucent cloud classification.
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="experience__data">
+                            <div>
+                                <h3 class="experience__title">Lecturer</h3>
+                                <span class="experience__subtitle">UiT - Dept. of Automation and Process Engineering</span>
+                                <div class="experience__calendar">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    Aug 2020 - Nov 2023
+                                </div>
+                                <p class="experience__description">
+                                    Designed and delivered web development courses covering HTML, CSS, and PHP. 
+                                    Developed comprehensive curriculum and assessments for undergraduate students.
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="experience__data">
+                            <div>
+                                <h3 class="experience__title">AI Developer / Team Lead</h3>
+                                <span class="experience__subtitle">Infodevelopers Pvt. Ltd</span>
+                                <div class="experience__calendar">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    March 2018 - Aug 2019
+                                </div>
+                                <p class="experience__description">
+                                    Led the expansion of AI department. Developed multiple AI projects including sentiment analysis, 
+                                    chatbots, and computer vision applications using cutting-edge ML/DL techniques.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="experience__content">
+                        <h3 class="experience__section-title">Education</h3>
+                        
+                        <div class="experience__data">
+                            <div>
+                                <h3 class="experience__title">Ph.D. Research Fellow</h3>
+                                <span class="experience__subtitle">UiT, The Arctic University of Norway</span>
+                                <div class="experience__calendar">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    2019 - 2024
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="experience__data">
+                            <div>
+                                <h3 class="experience__title">M.Eng. Information Technology</h3>
+                                <span class="experience__subtitle">Frankfurt University of Applied Sciences</span>
+                                <div class="experience__calendar">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    2017
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="experience__data">
+                            <div>
+                                <h3 class="experience__title">B.E. Electronics and Communication</h3>
+                                <span class="experience__subtitle">Kathmandu Engineering College</span>
+                                <div class="experience__calendar">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    2012
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section class="skills section" id="skills">
+            <div class="section-container">
+            <div class="container">
+                <h2 class="section__title">Skills</h2>
+                <span class="section__subtitle">My Technical Level</span>
+                
+                <div class="skills__container">
+                    <div class="skills__content">
+                        <h3 class="skills__title">Machine Learning & AI</h3>
+                        
+                        <div class="skills__box">
+                            <div class="skills__group">
+                                <div class="skills__data">
+                                    <h3 class="skills__name">Deep Learning</h3>
+                                    <span class="skills__level">Advanced</span>
+                                </div>
+                                
+                                <div class="skills__data">
+                                    <h3 class="skills__name">Machine Learning</h3>
+                                    <span class="skills__level">Advanced</span>
+                                </div>
+                                
+                                <div class="skills__data">
+                                    <h3 class="skills__name">Computer Vision</h3>
+                                    <span class="skills__level">Advanced</span>
+                                </div>
+                            </div>
+                            
+                            <div class="skills__group">
+                                <div class="skills__data">
+                                    <h3 class="skills__name">NLP</h3>
+                                    <span class="skills__level">Advanced</span>
+                                </div>
+                                
+                                <div class="skills__data">
+                                    <h3 class="skills__name">LLM & RAG</h3>
+                                    <span class="skills__level">Intermediate</span>
+                                </div>
+                                
+                                <div class="skills__data">
+                                    <h3 class="skills__name">Data Science</h3>
+                                    <span class="skills__level">Advanced</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="skills__content">
+                        <h3 class="skills__title">Programming & Tools</h3>
+                        
+                        <div class="skills__box">
+                            <div class="skills__group">
+                                <div class="skills__data">
+                                    <h3 class="skills__name">Python</h3>
+                                    <span class="skills__level">Advanced</span>
+                                </div>
+                                
+                                <div class="skills__data">
+                                    <h3 class="skills__name">SQL</h3>
+                                    <span class="skills__level">Intermediate</span>
+                                </div>
+                                
+                                <div class="skills__data">
+                                    <h3 class="skills__name">Docker</h3>
+                                    <span class="skills__level">Intermediate</span>
+                                </div>
+                            </div>
+                            
+                            <div class="skills__group">
+                                <div class="skills__data">
+                                    <h3 class="skills__name">Git</h3>
+                                    <span class="skills__level">Advanced</span>
+                                </div>
+                                
+                                <div class="skills__data">
+                                    <h3 class="skills__name">Azure ML</h3>
+                                    <span class="skills__level">Intermediate</span>
+                                </div>
+                                
+                                <div class="skills__data">
+                                    <h3 class="skills__name">MLOps</h3>
+                                    <span class="skills__level">Intermediate</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section class="projects section" id="projects">
+            <div class="section-container">
+            <div class="container">
+                <h2 class="section__title">Projects</h2>
+                <span class="section__subtitle">Most Recent Work</span>
+                
+                <div class="projects__filters">
+                    <span class="projects__filter active-filter" data-target="all">All</span>
+                    <span class="projects__filter" data-target="ai">AI/ML</span>
+                    <span class="projects__filter" data-target="research">Research</span>
+                    <span class="projects__filter" data-target="web">Web Dev</span>
+                </div>
+                
+                <div class="projects__container">
+                    <div class="projects__card mix ai">
+                        <div class="projects__data">
+                            <h3 class="projects__title">Noctilucent Cloud Classification</h3>
+                            <p class="projects__description">Deep learning-based classification system for noctilucent clouds using lightweight CNN architectures and explainability methods.</p>
+                            <div class="projects__tags">
+                                <span class="projects__tag">PyTorch</span>
+                                <span class="projects__tag">Computer Vision</span>
+                                <span class="projects__tag">CNN</span>
+                                <span class="projects__tag">Grad-CAM</span>
+                            </div>
+                            <div class="projects__buttons">
+                                <a href="#" class="projects__link">
+                                    Demo
+                                </a>
+                                <a href="#" class="projects__link">
+                                    Code
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="projects__card mix ai">
+                        <div class="projects__data">
+                            <h3 class="projects__title">Advanced Sentiment Analysis</h3>
+                            <p class="projects__description">NLP-based sentiment analysis system using LSTM and BiLSTM networks with NLTK for preprocessing and feature extraction.</p>
+                            <div class="projects__tags">
+                                <span class="projects__tag">NLP</span>
+                                <span class="projects__tag">LSTM</span>
+                                <span class="projects__tag">NLTK</span>
+                                <span class="projects__tag">Python</span>
+                            </div>
+                            <div class="projects__buttons">
+                                <a href="#" class="projects__link">
+                                    <i class="fas fa-external-link-alt"></i>
+                                    Demo
+                                </a>
+                                <a href="#" class="projects__link">
+                                    <i class="fab fa-github"></i>
+                                    Code
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="projects__card mix ai">
+                        <div class="projects__data">
+                            <h3 class="projects__title">Vehicle Number Plate Recognition</h3>
+                            <p class="projects__description">Computer vision system for automatic vehicle number plate detection and recognition using OpenCV and CNN architectures.</p>
+                            <div class="projects__tags">
+                                <span class="projects__tag">OpenCV</span>
+                                <span class="projects__tag">CNN</span>
+                                <span class="projects__tag">OCR</span>
+                                <span class="projects__tag">Python</span>
+                            </div>
+                            <div class="projects__buttons">
+                                <a href="#" onclick="alert('Demo will be available soon! This computer vision project is currently in development.')" class="projects__link">
+                                    Demo
+                                </a>
+                                <a href="#" onclick="alert('GitHub repository will be made public soon!')" class="projects__link">
+                                    Code
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="projects__card mix ai">
+                        <div class="projects__data">
+                            <h3 class="projects__title">Intelligent Chatbot System</h3>
+                            <p class="projects__description">AI-powered chatbot with natural language understanding using machine learning algorithms and NLP techniques.</p>
+                            <div class="projects__tags">
+                                <span class="projects__tag">NLP</span>
+                                <span class="projects__tag">Machine Learning</span>
+                                <span class="projects__tag">Chatbot</span>
+                                <span class="projects__tag">Python</span>
+                            </div>
+                            <div class="projects__buttons">
+                                <a href="#" class="projects__link">
+                                    Demo
+                                </a>
+                                <a href="#" class="projects__link">
+                                    Code
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="projects__card mix research">
+                        
+                        <div class="projects__data">
+                            <h3 class="projects__title">Research Publications</h3>
+                            <p class="projects__description">Scientific investigations on atmospheric phenomena using deep learning, published in peer-reviewed journals and conferences.</p>
+                            <div class="projects__tags">
+                                <span class="projects__tag">Research</span>
+                                <span class="projects__tag">Deep Learning</span>
+                                <span class="projects__tag">Publications</span>
+                                <span class="projects__tag">Scientific</span>
+                            </div>
+                            <div class="projects__buttons">
+                                <a href="#" class="projects__link">
+                                    Papers
+                                </a>
+                                <a href="#" class="projects__link">
+                                    ResearchGate
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="projects__card mix web">
+                        <div class="projects__data">
+                            <h3 class="projects__title">Web Development Course</h3>
+                            <p class="projects__description">Comprehensive web development curriculum covering HTML, CSS, and PHP, designed and delivered for undergraduate students.</p>
+                            <div class="projects__tags">
+                                <span class="projects__tag">HTML</span>
+                                <span class="projects__tag">CSS</span>
+                                <span class="projects__tag">PHP</span>
+                                <span class="projects__tag">Education</span>
+                            </div>
+                            <div class="projects__buttons">
+                                <a href="#" class="projects__link">
+                                    Course
+                                </a>
+                                <a href="#" class="projects__link">
+                                    Materials
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact section" id="contact">
+            <div class="section-container">
+            <div class="container">
+                <h2 class="section__title">Contact Me</h2>
+                <span class="section__subtitle">Get In Touch</span>
+                
+                <div class="contact__container">
+                    <div class="contact__info">
+                        <div class="contact__card">
+                            <i class="fas fa-envelope contact__card-icon"></i>
+                            <h3 class="contact__card-title">Email</h3>
+                            <span class="contact__card-data">sapkota0921@gmail.com</span>
+                            <a href="mailto:sapkota0921@gmail.com" class="contact__button">
+                                Write me <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                        
+                        <div class="contact__card">
+                            <i class="fas fa-phone contact__card-icon"></i>
+                            <h3 class="contact__card-title">Phone</h3>
+                            <span class="contact__card-data">+47 40647358</span>
+                            <a href="tel:+4740647358" class="contact__button">
+                                Call me <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                        
+                        <div class="contact__card">
+                            <i class="fab fa-linkedin contact__card-icon"></i>
+                            <h3 class="contact__card-title">LinkedIn</h3>
+                            <span class="contact__card-data">Connect with me</span>
+                            <a href="https://linkedin.com/in/rajendra-sapkota" target="_blank" class="contact__button">
+                                Connect <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <form class="contact__form" id="contact-form">
+                        <div class="contact__form-div">
+                            <label class="contact__form-tag" for="name">Name</label>
+                            <input type="text" name="name" id="name" placeholder="Insert your name" class="contact__form-input" required>
+                        </div>
+                        
+                        <div class="contact__form-div">
+                            <label class="contact__form-tag" for="email">Email</label>
+                            <input type="email" name="email" id="email" placeholder="Insert your email" class="contact__form-input" required>
+                        </div>
+                        
+                        <div class="contact__form-div contact__form-area">
+                            <label class="contact__form-tag" for="message">Message</label>
+                            <textarea name="message" id="message" cols="30" rows="10" placeholder="Write your message" class="contact__form-input" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="button contact__form-button">
+                            Send Message
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                        
+                        <div class="contact__message" id="contact-message"></div>
+                    </form>
+                </div>
+            </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer__container container">
+            <h1 class="footer__title">Rajendra Sapkota</h1>
+            
+            <ul class="footer__list">
+                <li>
+                    <a href="#home" class="footer__link">Home</a>
+                </li>
+                <li>
+                    <a href="#experience" class="footer__link">Experience</a>
+                </li>
+                <li>
+                    <a href="#projects" class="footer__link">Projects</a>
+                </li>
+                <li>
+                    <a href="#contact" class="footer__link">Contact</a>
+                </li>
+            </ul>
+            
+            <ul class="footer__social">
+                <a href="https://github.com/rajendrasapkota" target="_blank" class="footer__social-link">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://linkedin.com/in/rajendra-sapkota" target="_blank" class="footer__social-link">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://orcid.org/rajendra-sapkota" target="_blank" class="footer__social-link">
+                    <i class="fab fa-orcid"></i>
+                </a>
+                <a href="https://researchgate.net/profile/rajendra-sapkota" target="_blank" class="footer__social-link">
+                    <i class="fab fa-researchgate"></i>
+                </a>
+            </ul>
+            
+            <span class="footer__copy">
+                &#169; 2025 Rajendra Sapkota. All rights reserved.
+            </span>
+        </div>
+    </footer>
+
+    <!-- Scroll Up Button -->
+    <a href="#" class="scrollup" id="scroll-up">
+        <i class="fas fa-arrow-up scrollup__icon"></i>
+    </a>
+
+    <!-- Custom JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
