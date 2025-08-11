@@ -178,11 +178,8 @@
                             
                             <div class="hero__buttons">
                                 <a href="#projects" class="button hero__button">View My Work</a>
-                                <a href="#contact" class="button button--outline">Get In Touch</a>
-                                <a href="#" onclick="showDownloadMessage()" class="button button--secondary">
-                                    <i class="fas fa-download"></i>
-                                    Download CV
-                                </a>
+                                <a href="#contact" class="button button--outline">Get In Touch</a>  
+
                             </div>
                         </div>
                         
@@ -201,6 +198,8 @@
                 <!-- Background Effects -->
                 <div class="hero__bg-effects">
                     <div class="hero__shape hero__shape-1"></div>
+                    <div class="hero__shape hero__shape-2"></div>
+                    <div class="hero__shape hero__shape-3"></div>
                     <div class="hero__shape hero__shape-2"></div>
                     <div class="hero__shape hero__shape-3"></div>
                 </div>
@@ -224,25 +223,82 @@
                                     <i class="fas fa-calendar-alt"></i>
                                     Dec 2019 - Dec 2024
                                 </div>
-                                <p class="experience__description">
-                                    Conducted advanced research in deep learning for atmospheric science. Implemented lightweight CNN architectures 
-                                    and developed explainability methods for noctilucent cloud classification.
-                                </p>
+                                
+
+                                
+                                <div class="experience__description expandable-content">
+                                    <div class="content-preview">
+                                        Identified research objectives for the analysis of noctilucent cloud images using machine learning and AI. Implemented lightweight 
+                                        CNN architectures such as MobileNet, EfficientNet, SqueezeNet, ShuffleNet for classification problem and experimented with 
+                                        explainability methods...
+                                    </div>
+                                    <div class="content-full" style="display: none;">
+                                        <p><strong>Research Focus:</strong> Identified and formulated research objectives for the analysis of noctilucent cloud images using machine learning and AI, bridging the gaps in AI-driven atmospheric science.</p>
+                                        <p><strong>Technical Implementation:</strong> 
+                                            <li>Implemented lightweight CNN architectures optimized for computational efficiency while maintaining high classification accuracy. Integrated explainability methods including Grad-CAM and Saliency maps for model interpretability. <strong><a href="https://www.mdpi.com/2072-4292/14/10/2306" target="_blank">Learn more</a></strong></li>
+                                            <li>Applied KNN clustering to CNN-extracted features from NLC images, revealing latent data distributions and patterns critical for understanding atmospheric dynamics.</li>
+                                            <li>Developed a comprehensive evaluation framework to assess model performance and robustness, incorporating both quantitative metrics and qualitative analyses.</li>
+                                        </p>
+                                        <p><strong>Publications & Impact:</strong> Published research findings in peer-reviewed journals and presented at international conferences. Contributed to the atmospheric science community with applied machine learning techniques for detection and classification of noctilucent clouds. <strong><a href="https://www.mdpi.com/2072-4292/14/10/2306" target="_blank" rel="noopener noreferrer">Learn more</a></strong></p>
+                                        <p><strong>Skills Developed:</strong>
+                                            <li>Advanced theoretical understanding of machine learning and deep learning algorithms and architectures. Developed a deep understanding of supervised, unsupervised and semi-supervised learnings, CNNs, RNNs, and Transformers.</li>
+                                            <li>Scientific research, scientific writing, conference presentations, and collaboration with interdisciplinary teams.</li>
+                                            <li>Advanced PyTorch/TensorFlow usages, GPU programming, model optimization techniques, and model quantization techniques.</li>
+                                        </p>
+                                    </div>
+                                    <button class="expand-btn" onclick="toggleExperience(this)">
+                                        <i class="fas fa-chevron-down"></i> Show More
+                                    </button>
+                                </div>
+                                <!-- Skills Tags -->
+                                <div class="experience__skills">
+                                    <span class="experience__skill-tag">Python</span> 
+                                    <span class="experience__skill-tag">Deep Learning</span>
+                                    <span class="experience__skill-tag">PyTorch</span>                                
+                                    <span class="experience__skill-tag">Computer Vision</span>
+                                    <span class="experience__skill-tag">Git</span>
+                                    <span class="experience__skill-tag">Docker</span>
+                                    <span class="experience__skill-tag">Weights & Biases</span>
+                                    <span class="experience__skill-tag">GPU Training</span>
+
+                                </div>
                             </div>
                         </div>
                         
                         <div class="experience__data">
                             <div>
-                                <h3 class="experience__title">Lecturer</h3>
+                                <h3 class="experience__title">Graduate Teaching Assistant/ Lecturer</h3>
                                 <span class="experience__subtitle">UiT - Dept. of Automation and Process Engineering</span>
                                 <div class="experience__calendar">
                                     <i class="fas fa-calendar-alt"></i>
                                     Aug 2020 - Nov 2023
                                 </div>
-                                <p class="experience__description">
-                                    Designed and delivered web development courses covering HTML, CSS, and PHP. 
-                                    Developed comprehensive curriculum and assessments for undergraduate students.
-                                </p>
+                                
+                                
+                                <div class="experience__description expandable-content">
+                                    <div class="content-preview">
+                                        Designed and developed learning materials, delivered lectures, conducted labs and exams on "Web Development" course for the undergraduate students covering HTML, CSS, and PHP...
+                                    </div>
+                                    <div class="content-full" style="display: none;">
+                                        <p><strong>Course Development:</strong> Designed comprehensive web development curriculum from scratch, covering fundamental to advanced concepts in HTML5, CSS3, and PHP programming.</p>
+                                        <p><strong>Teaching Responsibilities:</strong> Delivered engaging lectures to 18+ undergraduate students per semester, facilitated hands-on lab sessions, and provided one-on-one mentoring for struggling students.</p>
+                                        <p><strong>Assessment & Evaluation:</strong> Created diverse assessment methods including group projects, and theoretical exams. Provided detailed feedback to help students improve their programming skills.</p>
+                                        
+                                    </div>
+                                    <button class="expand-btn" onclick="toggleExperience(this)">
+                                        <i class="fas fa-chevron-down"></i> Show More
+                                    </button>
+                                </div>
+                                <!-- Skills Tags -->
+                                <div class="experience__skills">
+                                    <span class="experience__skill-tag">Web Development</span>
+                                    <span class="experience__skill-tag">HTML5</span>
+                                    <span class="experience__skill-tag">CSS3</span>                                    
+                                    <span class="experience__skill-tag">PHP</span>                                    
+                                    <span class="experience__skill-tag">Teaching</span>
+                                    
+                                </div>
+                                
                             </div>
                         </div>
                         
@@ -254,10 +310,38 @@
                                     <i class="fas fa-calendar-alt"></i>
                                     March 2018 - Aug 2019
                                 </div>
-                                <p class="experience__description">
-                                    Led the expansion of AI department. Developed multiple AI projects including sentiment analysis, 
-                                    chatbots, and computer vision applications using cutting-edge ML/DL techniques.
-                                </p>
+                                
+                                
+                                
+                                <div class="experience__description expandable-content">
+                                    <div class="content-preview">
+                                        Led the rapid expansion and development of a new AI department in an established software company, developing AI solutions involving natural language processing (NLP), and computer vision (CV). Collaborated with executives, technical teams and product owners....
+                                    </div>
+                                    <div class="content-full" style="display: none;">
+                                        <p><strong>Leadership & Team Building:</strong> Played a key role in expanding the fresh AI department in a stablished software company.</p>
+                                        <p><strong>Project Portfolio:</strong> Developed multiple AI projects including sentiment analysis, chatbots, and computer vision applications.</p>
+                                        <p><strong>Client Relations:</strong> Collaborated directly with executives, technical teams and product owners.</p>
+                                        <p><strong>Technology Stack:</strong> Python, TensorFlow, PyTorch, OpenCV, NLTK, spaCy, Docker, Git MongoDB, PostgreSQL, APIs, and various ML frameworks.</p>
+                                    </div>
+                                    <button class="expand-btn" onclick="toggleExperience(this)">
+                                        <i class="fas fa-chevron-down"></i> Show More
+                                    </button>
+                                </div>
+                                <!-- Skills Tags -->
+                                <div class="experience__skills">
+                                    <span class="experience__skill-tag">Python</span>
+                                    <span class="experience__skill-tag">NLP</span>                                    
+                                    <span class="experience__skill-tag">Computer Vision</span>
+                                    <span class="experience__skill-tag">PyTorch</span>
+                                    <span class="experience__skill-tag">OpenCV</span>
+                                    <span class="experience__skill-tag">NLTK</span>
+                                    <span class="experience__skill-tag">spaCy</span>
+                                    <span class="experience__skill-tag">Docker</span>                                    
+                                    <span class="experience__skill-tag">PostgreSQL</span>
+                                    <span class="experience__skill-tag">APIs</span>
+                                    
+                                    
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -308,89 +392,31 @@
             <div class="section-container">
             <div class="container">
                 <h2 class="section__title">Skills</h2>
-                <span class="section__subtitle">My Technical Level</span>
+                <span class="section__subtitle">Core competencies and tooling</span>
                 
-                <div class="skills__container">
-                    <div class="skills__content">
-                        <h3 class="skills__title">Machine Learning & AI</h3>
-                        
-                        <div class="skills__box">
-                            <div class="skills__group">
-                                <div class="skills__data">
-                                    <h3 class="skills__name">Deep Learning</h3>
-                                    <span class="skills__level">Advanced</span>
-                                </div>
-                                
-                                <div class="skills__data">
-                                    <h3 class="skills__name">Machine Learning</h3>
-                                    <span class="skills__level">Advanced</span>
-                                </div>
-                                
-                                <div class="skills__data">
-                                    <h3 class="skills__name">Computer Vision</h3>
-                                    <span class="skills__level">Advanced</span>
-                                </div>
-                            </div>
-                            
-                            <div class="skills__group">
-                                <div class="skills__data">
-                                    <h3 class="skills__name">NLP</h3>
-                                    <span class="skills__level">Advanced</span>
-                                </div>
-                                
-                                <div class="skills__data">
-                                    <h3 class="skills__name">LLM & RAG</h3>
-                                    <span class="skills__level">Intermediate</span>
-                                </div>
-                                
-                                <div class="skills__data">
-                                    <h3 class="skills__name">Data Science</h3>
-                                    <span class="skills__level">Advanced</span>
-                                </div>
-                            </div>
-                        </div>
+                <div class="skills-two-col">
+                  <div>
+                    <div class="skills-chart-card">
+                      <h3 class="skills-heading">Core Skills</h3>
+                      <canvas id="skillsRadar" aria-label="Skills radar chart" role="img"></canvas>
                     </div>
-                    
-                    <div class="skills__content">
-                        <h3 class="skills__title">Programming & Tools</h3>
-                        
-                        <div class="skills__box">
-                            <div class="skills__group">
-                                <div class="skills__data">
-                                    <h3 class="skills__name">Python</h3>
-                                    <span class="skills__level">Advanced</span>
-                                </div>
-                                
-                                <div class="skills__data">
-                                    <h3 class="skills__name">SQL</h3>
-                                    <span class="skills__level">Intermediate</span>
-                                </div>
-                                
-                                <div class="skills__data">
-                                    <h3 class="skills__name">Docker</h3>
-                                    <span class="skills__level">Intermediate</span>
-                                </div>
-                            </div>
-                            
-                            <div class="skills__group">
-                                <div class="skills__data">
-                                    <h3 class="skills__name">Git</h3>
-                                    <span class="skills__level">Advanced</span>
-                                </div>
-                                
-                                <div class="skills__data">
-                                    <h3 class="skills__name">Azure ML</h3>
-                                    <span class="skills__level">Intermediate</span>
-                                </div>
-                                
-                                <div class="skills__data">
-                                    <h3 class="skills__name">MLOps</h3>
-                                    <span class="skills__level">Intermediate</span>
-                                </div>
-                            </div>
-                        </div>
+                  </div>
+                  <div>
+                    <div class="skills-tags-card">
+                      <h3 class="skills-heading">Other Skills</h3>
+                      <ul class="skills-tags">
+                        <li>Core DS/ML: NumPy, SciPy, scikit-learn, PyTorch, TensorFlow, Keras</li>
+                        <li>NLP/CV: NLTK, spaCy, Transformers, OpenCV, PIL, torchvision</li>
+                        <li>MLOps/Exp tracking: MLflow, Weights & Biases</li>
+                        <li>Deployment/Infra: Django, Flask, FastAPI, Git, Docker, Azure Databricks, Vertex AI, IBM Watson</li>
+                        <li>Viz/BI: Seaborn, Plotly, Tableau</li>
+                        <li>Tools: Pycharm, Jupyter notebook, VS Code, Linux, Bash</li>
+                        <li>Programming: Python, SQL, HTML, CSS, JavaScript, PHP</li>
+                      </ul>
                     </div>
+                  </div>
                 </div>
+
             </div>
             </div>
         </section>
@@ -407,24 +433,30 @@
                     <span class="projects__filter" data-target="ai">AI/ML</span>
                     <span class="projects__filter" data-target="research">Research</span>
                     <span class="projects__filter" data-target="web">Web Dev</span>
+                    <span class="projects__filter" data-target="web">Automation</span>
                 </div>
                 
                 <div class="projects__container">
-                    <div class="projects__card mix ai">
+                    <div class="projects__card mix ai research">
                         <div class="projects__data">
                             <h3 class="projects__title">Noctilucent Cloud Classification</h3>
                             <p class="projects__description">Deep learning-based classification system for noctilucent clouds using lightweight CNN architectures and explainability methods.</p>
                             <div class="projects__tags">
-                                <span class="projects__tag">PyTorch</span>
+                            
+                                <span class="projects__tag">Machine Learning</span>
+                                <span class="projects__tag">Deep Learning</span>
                                 <span class="projects__tag">Computer Vision</span>
-                                <span class="projects__tag">CNN</span>
+                                <span class="projects__tag">PyTorch</span>
+                                <span class="projects__tag">Clustering</span>                            
                                 <span class="projects__tag">Grad-CAM</span>
                             </div>
                             <div class="projects__buttons">
                                 <a href="#" class="projects__link">
+                                    <i class="fas fa-external-link-alt"></i>
                                     Demo
                                 </a>
                                 <a href="#" class="projects__link">
+                                    <i class="fab fa-github"></i>
                                     Code
                                 </a>
                             </div>
@@ -440,6 +472,8 @@
                                 <span class="projects__tag">LSTM</span>
                                 <span class="projects__tag">NLTK</span>
                                 <span class="projects__tag">Python</span>
+                                <span class="projects__tag">Machine Learning</span>
+                                <span class="projects__tag">Deep Learning</span>
                             </div>
                             <div class="projects__buttons">
                                 <a href="#" class="projects__link">
@@ -459,16 +493,21 @@
                             <h3 class="projects__title">Vehicle Number Plate Recognition</h3>
                             <p class="projects__description">Computer vision system for automatic vehicle number plate detection and recognition using OpenCV and CNN architectures.</p>
                             <div class="projects__tags">
-                                <span class="projects__tag">OpenCV</span>
-                                <span class="projects__tag">CNN</span>
-                                <span class="projects__tag">OCR</span>
                                 <span class="projects__tag">Python</span>
+                                <span class="projects__tag">Computer Vision</span>
+                                <span class="projects__tag">OCR</span>
+                                <span class="projects__tag">TensorFlow</span>
+                                <span class="projects__tag">Keras</span>
+                               <span class="projects__tag">OpenCV</span>
+
                             </div>
                             <div class="projects__buttons">
                                 <a href="#" onclick="alert('Demo will be available soon! This computer vision project is currently in development.')" class="projects__link">
+                                    <i class="fas fa-external-link-alt"></i>
                                     Demo
                                 </a>
                                 <a href="#" onclick="alert('GitHub repository will be made public soon!')" class="projects__link">
+                                    <i class="fab fa-github"></i>
                                     Code
                                 </a>
                             </div>
@@ -477,67 +516,32 @@
                     
                     <div class="projects__card mix ai">
                         <div class="projects__data">
-                            <h3 class="projects__title">Intelligent Chatbot System</h3>
+                            <h3 class="projects__title">Chatbot System</h3>
                             <p class="projects__description">AI-powered chatbot with natural language understanding using machine learning algorithms and NLP techniques.</p>
                             <div class="projects__tags">
                                 <span class="projects__tag">NLP</span>
-                                <span class="projects__tag">Machine Learning</span>
+                                
                                 <span class="projects__tag">Chatbot</span>
                                 <span class="projects__tag">Python</span>
+                                <span class="projects__tag">Keras</span>
+                                
+                                <span class="projects__tag">Machine Learning</span>
                             </div>
                             <div class="projects__buttons">
                                 <a href="#" class="projects__link">
+                                    <i class="fas fa-external-link-alt"></i>
                                     Demo
                                 </a>
                                 <a href="#" class="projects__link">
+                                    <i class="fab fa-github"></i>
                                     Code
                                 </a>
                             </div>
                         </div>
                     </div>
                     
-                    <div class="projects__card mix research">
-                        
-                        <div class="projects__data">
-                            <h3 class="projects__title">Research Publications</h3>
-                            <p class="projects__description">Scientific investigations on atmospheric phenomena using deep learning, published in peer-reviewed journals and conferences.</p>
-                            <div class="projects__tags">
-                                <span class="projects__tag">Research</span>
-                                <span class="projects__tag">Deep Learning</span>
-                                <span class="projects__tag">Publications</span>
-                                <span class="projects__tag">Scientific</span>
-                            </div>
-                            <div class="projects__buttons">
-                                <a href="#" class="projects__link">
-                                    Papers
-                                </a>
-                                <a href="#" class="projects__link">
-                                    ResearchGate
-                                </a>
-                            </div>
-                        </div>
-                    </div>
                     
-                    <div class="projects__card mix web">
-                        <div class="projects__data">
-                            <h3 class="projects__title">Web Development Course</h3>
-                            <p class="projects__description">Comprehensive web development curriculum covering HTML, CSS, and PHP, designed and delivered for undergraduate students.</p>
-                            <div class="projects__tags">
-                                <span class="projects__tag">HTML</span>
-                                <span class="projects__tag">CSS</span>
-                                <span class="projects__tag">PHP</span>
-                                <span class="projects__tag">Education</span>
-                            </div>
-                            <div class="projects__buttons">
-                                <a href="#" class="projects__link">
-                                    Course
-                                </a>
-                                <a href="#" class="projects__link">
-                                    Materials
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+                    
                 </div>
             </div>
             </div>
@@ -564,7 +568,7 @@
                         <div class="contact__card">
                             <i class="fas fa-phone contact__card-icon"></i>
                             <h3 class="contact__card-title">Phone</h3>
-                            <span class="contact__card-data">+47 40647358</span>
+                            <span class="contact__card-data">+47 XXXXXXX</span>
                             <a href="tel:+4740647358" class="contact__button">
                                 Call me <i class="fas fa-arrow-right"></i>
                             </a>
@@ -622,6 +626,9 @@
                     <a href="#experience" class="footer__link">Experience</a>
                 </li>
                 <li>
+                    <a href="#skills" class="footer__link">Skills</a>
+                </li>
+                <li>
                     <a href="#projects" class="footer__link">Projects</a>
                 </li>
                 <li>
@@ -635,12 +642,6 @@
                 </a>
                 <a href="https://linkedin.com/in/rajendra0921" target="_blank" class="footer__social-link">
                     <i class="fab fa-linkedin"></i>
-                </a>
-                <a href="https://orcid.org/rajendra0921" target="_blank" class="footer__social-link">
-                    <i class="fab fa-orcid"></i>
-                </a>
-                <a href="https://researchgate.net/profile/rajendra0921" target="_blank" class="footer__social-link">
-                    <i class="fab fa-researchgate"></i>
                 </a>
             </ul>
             
@@ -656,6 +657,7 @@
     </a>
 
     <!-- Custom JavaScript -->
-    <script src="script.js"></script>
-</body>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+     <script src="script.js"></script>
+  </body>
 </html>

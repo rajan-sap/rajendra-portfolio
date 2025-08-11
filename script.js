@@ -55,6 +55,28 @@ skillsHeader.forEach((el) => {
     el.addEventListener('click', toggleSkills);
 });
 
+/*==================== EXPANDABLE EXPERIENCE DESCRIPTIONS ====================*/
+function toggleExperience(button) {
+    const expandableContent = button.closest('.expandable-content');
+    const preview = expandableContent.querySelector('.content-preview');
+    const fullContent = expandableContent.querySelector('.content-full');
+    const icon = button.querySelector('i');
+    
+    if (fullContent.style.display === 'none') {
+        // Expand
+        preview.style.display = 'none';
+        fullContent.style.display = 'block';
+        button.innerHTML = '<i class="fas fa-chevron-up"></i> Show Less';
+        button.classList.add('expanded');
+    } else {
+        // Collapse
+        preview.style.display = 'block';
+        fullContent.style.display = 'none';
+        button.innerHTML = '<i class="fas fa-chevron-down"></i> Show More';
+        button.classList.remove('expanded');
+    }
+}
+
 /*==================== PROJECTS FILTERS ====================*/
 const projectFilters = document.querySelectorAll('.projects__filter');
 const projectCards = document.querySelectorAll('.projects__card');
@@ -417,34 +439,12 @@ window.addEventListener('scroll', throttle(scrollUp, 16));
 window.addEventListener('scroll', throttle(scrollActive, 16));
 
 /*==================== THEME TOGGLE ====================*/
-function createThemeToggle() {
-    const themeButton = document.createElement('button');
-    themeButton.className = 'theme-toggle';
-    themeButton.innerHTML = '<i class="fas fa-moon"></i>';
-    themeButton.setAttribute('aria-label', 'Toggle dark theme');
-    
-    document.body.appendChild(themeButton);
-    
-    // Check for saved theme preference or default to 'light' mode
-    const currentTheme = localStorage.getItem('theme') || 'light';
+// Theme toggle functionality is handled by the navigation bar theme toggle button
+// Initialize theme on page load
+(function() {
+    const currentTheme = localStorage.getItem('theme') || localStorage.getItem('pref-theme') || 'light';
     document.body.classList.toggle('dark-theme', currentTheme === 'dark');
-    
-    if(currentTheme === 'dark') {
-        themeButton.innerHTML = '<i class="fas fa-sun"></i>';
-    }
-    
-    themeButton.addEventListener('click', () => {
-        document.body.classList.toggle('dark-theme');
-        
-        const theme = document.body.classList.contains('dark-theme') ? 'dark' : 'light';
-        localStorage.setItem('theme', theme);
-        
-        themeButton.innerHTML = theme === 'dark' ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
-    });
-}
-
-// Initialize theme toggle
-createThemeToggle();
+})();
 
 /*==================== LOADING ANIMATION ====================*/
 function createLoadingAnimation() {
@@ -753,4 +753,101 @@ document.addEventListener('DOMContentLoaded', function() {
       icon.classList.remove('fa-moon'); icon.classList.add('fa-sun');
     } else { icon.classList.remove('fa-sun'); icon.classList.add('fa-moon'); }
   }
+})();
+
+/*==================== SKILLS RADAR (Elegant) ====================*/
+(function(){
+  const canvas = document.getElementById('skillsRadar');
+  if(!canvas || !window.Chart) return;
+
+  // Theme-aware getters (read from body so dark theme vars apply)
+  const css = () => getComputedStyle(document.body);
+  const accentCol = () => (css().getPropertyValue('--first-color').trim() || '#3b82f6');
+  const borderCol = () => (css().getPropertyValue('--scroll-bar-color').trim() || '#e5e7eb');
+  const textCol = () => (css().getPropertyValue('--title-color').trim() || '#0a0a0a');
+
+  // Word-wrap helper for point labels (returns array of lines)
+  function wrapLabel(text, maxLen = 14){
+    const words = String(text).split(' ');
+    const lines = [];
+    let line = '';
+    for(const w of words){
+      const test = line.length ? line + ' ' + w : w;
+      if(test.length > maxLen){
+        if(line) lines.push(line);
+        line = w;
+      } else {
+        line = test;
+      }
+    }
+    if(line) lines.push(line);
+    return lines;
+  }
+
+  const chart = new Chart(canvas, {
+    type: 'radar',
+    data: {
+      labels: [
+        'Data Science/ ML',
+        'Data Engineering',
+        'Experimentation & Causality',
+        'MLOps & Production',
+        "Automation - LLM/MCP/N8N",
+        'Communication & Leadership',
+        'Analytical Thinking'
+      ],
+      datasets: [{
+        label: 'Proficiency (%)',
+        data: [88, 65, 82, 80, 85, 95, 85],
+        fill: false,
+        borderWidth: 2,
+        borderColor: accentCol(),
+        pointRadius: 6,
+        pointBackgroundColor: accentCol(),
+        pointBorderColor: '#fff',
+        pointHoverBackgroundColor: '#fff',
+        pointHoverBorderColor: accentCol()
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: true,
+      layout: { padding: 20 }, // reduce clipping of wrapped labels
+      scales: {
+        r: {
+          angleLines: { color: borderCol() },
+          grid: { color: 'transparent' },
+          suggestedMin: 0,
+          suggestedMax: 100,
+          pointLabels: {
+            color: textCol(),
+            font: { size: 12, weight: 600 },
+            padding: 6,
+            callback: (label) => wrapLabel(label, 16)
+          },
+          ticks: { display: false }
+        }
+      },
+      plugins: { legend: { display: false } }
+    }
+  });
+
+  // Auto-update colors when theme toggles (observe body class changes)
+  const applyTheme = () => {
+    const a = accentCol();
+    const b = borderCol();
+    const t = textCol();
+    const ds = chart.data.datasets[0];
+    ds.borderColor = a;
+    ds.pointBackgroundColor = a;
+    ds.pointHoverBorderColor = a;
+    chart.options.scales.r.angleLines.color = b;
+    chart.options.scales.r.pointLabels.color = t;
+    chart.update();
+  };
+
+  const themeBtn = document.getElementById('theme-toggle');
+  themeBtn && themeBtn.addEventListener('click', () => setTimeout(applyTheme, 0));
+  const mo = new MutationObserver(applyTheme);
+  mo.observe(document.body, { attributes:true, attributeFilter:['class'] });
 })();
