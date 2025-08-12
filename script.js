@@ -318,43 +318,6 @@ if(heroSection) {
     heroObserver.observe(heroSection);
 }
 
-/*==================== SKILLS PROGRESS ANIMATION ====================*/
-function animateSkillsProgress() {
-    const skillsData = document.querySelectorAll('.skills__data');
-    
-    skillsData.forEach((skill, index) => {
-        const level = skill.querySelector('.skills__level').textContent;
-        let percentage = 0;
-        
-        switch(level) {
-            case 'Advanced':
-                percentage = 90;
-                break;
-            case 'Intermediate':
-                percentage = 75;
-                break;
-            case 'Basic':
-                percentage = 50;
-                break;
-            default:
-                percentage = 60;
-        }
-        
-        // Create progress bar
-        const progressBar = document.createElement('div');
-        progressBar.className = 'skills__progress';
-        progressBar.innerHTML = `<div class="skills__progress-bar" style="width: 0%"></div>`;
-        
-        skill.appendChild(progressBar);
-        
-        // Animate progress bar
-        setTimeout(() => {
-            const bar = progressBar.querySelector('.skills__progress-bar');
-            bar.style.transition = 'width 1.5s ease-in-out';
-            bar.style.width = percentage + '%';
-        }, index * 200);
-    });
-}
 
 // Animate skills when section becomes visible
 const skillsObserver = new IntersectionObserver((entries) => {
@@ -798,7 +761,7 @@ document.addEventListener('DOMContentLoaded', function() {
       ],
       datasets: [{
         label: 'Proficiency (%)',
-        data: [88, 65, 82, 80, 85, 95, 85],
+        data: [88, 65, 82, 80, 85, 85,95],
         fill: false,
         borderWidth: 2,
         borderColor: accentCol(),
