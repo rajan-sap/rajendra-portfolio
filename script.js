@@ -135,6 +135,69 @@ function scrollUp() {
 }
 window.addEventListener('scroll', scrollUp);
 
+/*==================== SHOW LEFT NAVIGATION ON SCROLL ====================*/
+function showLeftNav() {
+    const leftNav = document.getElementById('left-nav');
+    // Show left navigation when user scrolls down from hero section
+    if(this.scrollY >= 200) {
+        leftNav.classList.add('show');
+    } else {
+        leftNav.classList.remove('show');
+    }
+}
+window.addEventListener('scroll', showLeftNav);
+
+/*==================== LEFT NAVIGATION ACTIVE LINK ====================*/
+function updateLeftNavActive() {
+    const scrollY = window.pageYOffset;
+    const leftNavLinks = document.querySelectorAll('.left-nav__link');
+    
+    // First, remove all active classes
+    leftNavLinks.forEach(link => {
+        link.classList.remove('active');
+    });
+
+    // Then find the current section and add active class to corresponding link
+    sections.forEach(current => {
+        const sectionHeight = current.offsetHeight;
+        const sectionTop = current.offsetTop - 50;
+        const sectionId = current.getAttribute('id');
+
+        if(scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+            // Find the corresponding left nav link and add active class
+            const activeLink = document.querySelector(`.left-nav__link[href="#${sectionId}"]`);
+            if(activeLink) {
+                activeLink.classList.add('active');
+            }
+        }
+    });
+}
+window.addEventListener('scroll', updateLeftNavActive);
+
+/*==================== LEFT NAVIGATION SMOOTH SCROLLING ====================*/
+const leftNavLinks = document.querySelectorAll('.left-nav__link');
+
+leftNavLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        
+        // Check if it's an internal link (starts with #)
+        if(href && href.startsWith('#')) {
+            e.preventDefault();
+            
+            const targetId = href.substring(1);
+            const targetSection = document.getElementById(targetId);
+            
+            if(targetSection) {
+                targetSection.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        }
+    });
+});
+
 /*==================== SCROLL SECTIONS ACTIVE LINK ====================*/
 const sections = document.querySelectorAll('section[id]');
 
@@ -298,16 +361,18 @@ function typeWriter(element, text, speed = 100) {
 // Initialize typing animation when hero section is visible
 const heroObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-        if(entry.isIntersecting) {
+        if (entry.isIntersecting) {
             const heroName = document.querySelector('.hero__name');
             const heroProfession = document.querySelector('.hero__profession');
             
-            if(heroName && !heroName.classList.contains('typed')) {
+            if (heroName && !heroName.classList.contains('typed')) {
                 heroName.classList.add('typed');
-                setTimeout(() => {
-                    typeWriter(heroName, 'Rajendra Sapkota', 150);
-                }, 500);
-
+                const reduce = (() => { try { return window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches; } catch(_) { return false; } })();
+                if (reduce) {
+                  heroName.textContent = 'Rajendra Sapkota';
+                } else {
+                  setTimeout(() => { typeWriter(heroName, 'Rajendra Sapkota', 150); }, 500);
+                }
             }
         }
     });
@@ -318,13 +383,12 @@ if(heroSection) {
     heroObserver.observe(heroSection);
 }
 
-
-// Animate skills when section becomes visible
+/*==================== SKILLS OBSERVER ====================*/
 const skillsObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-        if(entry.isIntersecting && !entry.target.classList.contains('animated')) {
+        if (entry.isIntersecting && !entry.target.classList.contains('animated')) {
             entry.target.classList.add('animated');
-            animateSkillsProgress();
+            // Previously called animateSkillsProgress(); which is undefined.
         }
     });
 }, { threshold: 0.3 });
@@ -354,24 +418,27 @@ images.forEach(img => {
 
 /*==================== PARTICLE BACKGROUND ====================*/
 function createParticles() {
-    const particleContainer = document.createElement('div');
-    particleContainer.className = 'particles';
-    document.querySelector('.hero').appendChild(particleContainer);
-    
-    for(let i = 0; i < 50; i++) {
-        const particle = document.createElement('div');
-        particle.className = 'particle';
-        
-        // Random position and size
-        particle.style.left = Math.random() * 100 + '%';
-        particle.style.top = Math.random() * 100 + '%';
-        particle.style.width = (Math.random() * 4 + 1) + 'px';
-        particle.style.height = particle.style.width;
-        particle.style.animationDuration = (Math.random() * 20 + 10) + 's';
-        particle.style.animationDelay = Math.random() * 20 + 's';
-        
-        particleContainer.appendChild(particle);
-    }
+  try {
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  } catch(_) {}
+  const hero = document.querySelector('.hero');
+  if (!hero) return;
+  const particleContainer = document.createElement('div');
+  particleContainer.className = 'particles';
+  hero.appendChild(particleContainer);
+  const count = Math.min(50, Math.max(20, Math.floor(window.innerWidth / 30)));
+  for (let i = 0; i < count; i++) {
+    const particle = document.createElement('div');
+    particle.className = 'particle';
+    particle.style.left = Math.random() * 100 + '%';
+    particle.style.top = Math.random() * 100 + '%';
+    const size = (Math.random() * 4 + 1);
+    particle.style.width = size + 'px';
+    particle.style.height = size + 'px';
+    particle.style.animationDuration = (Math.random() * 20 + 10) + 's';
+    particle.style.animationDelay = Math.random() * 20 + 's';
+    particleContainer.appendChild(particle);
+  }
 }
 
 // Initialize particles
@@ -396,19 +463,16 @@ function throttle(func, limit) {
 window.removeEventListener('scroll', scrollHeader);
 window.removeEventListener('scroll', scrollUp);
 window.removeEventListener('scroll', scrollActive);
+window.removeEventListener('scroll', showLeftNav);
+window.removeEventListener('scroll', updateLeftNavActive);
 
 window.addEventListener('scroll', throttle(scrollHeader, 16));
 window.addEventListener('scroll', throttle(scrollUp, 16));
 window.addEventListener('scroll', throttle(scrollActive, 16));
+window.addEventListener('scroll', throttle(showLeftNav, 16));
+window.addEventListener('scroll', throttle(updateLeftNavActive, 16));
 
 /*==================== THEME TOGGLE ====================*/
-// Theme toggle functionality is handled by the navigation bar theme toggle button
-// Initialize theme on page load
-(function() {
-    const currentTheme = localStorage.getItem('theme') || localStorage.getItem('pref-theme') || 'light';
-    document.body.classList.toggle('dark-theme', currentTheme === 'dark');
-})();
-
 /*==================== LOADING ANIMATION ====================*/
 function createLoadingAnimation() {
     const loader = document.createElement('div');
@@ -436,240 +500,32 @@ function createLoadingAnimation() {
 createLoadingAnimation();
 
 /*==================== KEYBOARD NAVIGATION ====================*/
+// Replace Tab trapping with only Escape-to-close for better accessibility
+document.removeEventListener && document.removeEventListener('keydown', () => {});
 document.addEventListener('keydown', (e) => {
-    const focusableElements = 'a, button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
-    const focusable = Array.from(document.querySelectorAll(focusableElements));
-    const index = focusable.indexOf(document.activeElement);
-    
-    if(e.key === 'Tab') {
-        if(e.shiftKey) {
-            if(index === 0) {
-                focusable[focusable.length - 1].focus();
-                e.preventDefault();
-            }
-        } else {
-            if(index === focusable.length - 1) {
-                focusable[0].focus();
-                e.preventDefault();
-            }
-        }
+  // ESC to close mobile menu
+  if (e.key === 'Escape') {
+    const navMenu = document.getElementById('nav-menu');
+    if (navMenu && navMenu.classList.contains('show-menu')) {
+      navMenu.classList.remove('show-menu');
     }
-    
-    // ESC to close mobile menu
-    if(e.key === 'Escape') {
-        const navMenu = document.getElementById('nav-menu');
-        if(navMenu.classList.contains('show-menu')) {
-            navMenu.classList.remove('show-menu');
-        }
-    }
-});
-
-/*==================== SCROLL ANIMATIONS ====================*/
-function revealOnScroll() {
-    const reveals = document.querySelectorAll('.reveal');
-    
-    reveals.forEach(reveal => {
-        const windowHeight = window.innerHeight;
-        const elementTop = reveal.getBoundingClientRect().top;
-        const elementVisible = 150;
-        
-        if(elementTop < windowHeight - elementVisible) {
-            reveal.classList.add('active');
-        }
-    });
-}
-
-window.addEventListener('scroll', throttle(revealOnScroll, 16));
-
-/*==================== INITIALIZE ANIMATIONS ====================*/
-document.addEventListener('DOMContentLoaded', () => {
-    // Add reveal class to animated elements
-    const animatedElements = document.querySelectorAll('.about__info-item, .skills__data, .projects__card');
-    animatedElements.forEach(el => el.classList.add('reveal'));
-    
-    // Initialize AOS (Animate On Scroll) alternative
-    revealOnScroll();
+  }
 });
 
 /*==================== ERROR HANDLING ====================*/
+// Make error logs more informative and avoid 'null'
+window.removeEventListener && window.removeEventListener('error', () => {});
 window.addEventListener('error', (e) => {
-    console.error('An error occurred:', e.error);
-    // Optionally show user-friendly error message
+  const msg = (e && (e.message || (e.error && e.error.message))) || 'Unknown error';
+  console.error('An error occurred:', msg, e);
 });
 
 // Handle unhandled promise rejections
+window.removeEventListener && window.removeEventListener('unhandledrejection', () => {});
 window.addEventListener('unhandledrejection', (e) => {
-    console.error('Unhandled promise rejection:', e.reason);
-    e.preventDefault();
+  console.error('Unhandled promise rejection:', e && (e.reason?.message || e.reason || 'Unknown'));
+  e.preventDefault();
 });
-
-/*==================== RESIZE HANDLER ====================*/
-let resizeTimer;
-window.addEventListener('resize', () => {
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(() => {
-        // Recalculate animations and layouts if needed
-        // Mobile and desktop optimizations can be added here if needed
-    }, 250);
-});
-
-/*==================== PRELOAD CRITICAL RESOURCES ====================*/
-function preloadImages() {
-    const imageUrls = [
-        'https://via.placeholder.com/300x300/4f46e5/ffffff?text=Profile',
-        'https://via.placeholder.com/400x500/6366f1/ffffff?text=About+Me'
-    ];
-    
-    imageUrls.forEach(url => {
-        const img = new Image();
-        img.src = url;
-    });
-}
-
-// Preload images after page load
-window.addEventListener('load', preloadImages);
-
-/*==================== LEFT NAVIGATION ====================*/
-function showLeftNav() {
-    const leftNav = document.getElementById('left-nav');
-    const scrollY = window.pageYOffset;
-
-    if(scrollY >= 100) {
-        leftNav.classList.add('show');
-        // Add body class for content padding
-        document.body.classList.add('left-nav-open');
-    } else {
-        leftNav.classList.remove('show');
-        // Remove body class for content padding
-        document.body.classList.remove('left-nav-open');
-    }
-}
-
-window.addEventListener('scroll', showLeftNav);
-
-// Left navigation active link
-function leftNavLinkAction() {
-    const leftNavLinks = document.querySelectorAll('.left-nav__link');
-    
-    leftNavLinks.forEach(link => {
-        link.classList.remove('active');
-    });
-    
-    this.classList.add('active');
-}
-
-const leftNavLinks = document.querySelectorAll('.left-nav__link');
-leftNavLinks.forEach(link => link.addEventListener('click', leftNavLinkAction));
-
-// Update active left nav link based on scroll position
-function updateActiveLeftNavLink() {
-    const sections = document.querySelectorAll('section[id]');
-    const scrollY = window.pageYOffset;
-
-    sections.forEach(current => {
-        const sectionHeight = current.offsetHeight;
-        const sectionTop = current.offsetTop - 150;
-        const sectionId = current.getAttribute('id');
-        const leftNavLink = document.querySelector('.left-nav__link[href*=' + sectionId + ']');
-
-        if(scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-            leftNavLinks.forEach(link => link.classList.remove('active'));
-            if(leftNavLink) {
-                leftNavLink.classList.add('active');
-            }
-        }
-    });
-}
-
-window.addEventListener('scroll', updateActiveLeftNavLink);
-
-/*==================== ENHANCED PROJECT INTERACTIONS ====================*/
-// Add better feedback for project buttons
-document.addEventListener('DOMContentLoaded', function() {
-    // Add enhanced click feedback for all project links
-    const projectLinks = document.querySelectorAll('.projects__link');
-    
-    projectLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            // Add visual feedback
-            this.style.transform = 'scale(0.95)';
-            setTimeout(() => {
-                this.style.transform = '';
-            }, 150);
-        });
-    });
-
-    // Add enhanced hover effects for hero info items
-    const infoItems = document.querySelectorAll('.hero__info-item');
-    
-    infoItems.forEach(item => {
-        item.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-3px) scale(1.02)';
-        });
-        
-        item.addEventListener('mouseleave', function() {
-            this.style.transform = '';
-        });
-    });
-});
-
-/*==================== BUTTON CLICK ANIMATIONS ====================*/
-// Add click animations to all buttons
-document.addEventListener('DOMContentLoaded', function() {
-    const buttons = document.querySelectorAll('.button');
-    
-    buttons.forEach(button => {
-        button.addEventListener('click', function(e) {
-            // Create ripple effect
-            const ripple = document.createElement('span');
-            const rect = this.getBoundingClientRect();
-            const size = Math.max(rect.width, rect.height);
-            const x = e.clientX - rect.left - size / 2;
-            const y = e.clientY - rect.top - size / 2;
-            
-            ripple.style.width = ripple.style.height = size + 'px';
-            ripple.style.left = x + 'px';
-            ripple.style.top = y + 'px';
-            ripple.classList.add('ripple');
-            
-            this.appendChild(ripple);
-            
-            setTimeout(() => {
-                ripple.remove();
-            }, 600);
-        });
-    });
-});
-
-/*==================== ENHANCED USER FEEDBACK FUNCTIONS ====================*/
-// Professional download CV message
-function showDownloadMessage() {
-    const message = `📄 CV Download Notice\n\n` +
-                   `Thank you for your interest in my CV!\n\n` +
-                   `The download functionality is currently under development and will be available soon.\n\n` +
-                   `In the meantime, you can:\n` +
-                   `• View my work in the Projects section\n` +
-                   `• Contact me directly for CV requests\n` +
-                   `• Connect with me through the Contact section\n\n` +
-                   `Thank you for your understanding! 🙏`;
-    
-    alert(message);
-}
-
-// Location information with navigation
-function showLocationInfo(event) {
-    // Don't prevent navigation, just show additional info
-    const message = `📍 Location: Kristiansand, Norway\n\n` +
-                   `Navigating to Contact section for more details...`;
-    
-    // Show brief message
-    setTimeout(() => {
-        alert(message);
-    }, 100);
-    
-    // Allow the link to navigate normally
-    return true;
-}
 
 /*==================== SECTION VERIFICATION ====================*/
 // Verify all navigation links work properly
@@ -753,7 +609,7 @@ document.addEventListener('DOMContentLoaded', function() {
       labels: [
         'Data Science/ ML',
         'Data Engineering',
-        'Experimentation & Causality',
+        'Experimentation & Inference',
         'MLOps & Production',
         "Automation - LLM/MCP/N8N",
         'Communication & Leadership',
