@@ -1341,7 +1341,7 @@ body:not(.dark-theme) .experience__skill-tag:hover {
 /* Specializations card uses hero gradient (for dark theme) */
 .skills-tags-card{background:var(--hero-gradient); border:1px solid rgba(0,0,0,0.06); border-radius:16px; padding:16px; box-shadow: var(--container-shadow)}
 
-.skills-heading{margin:0 0 16px; font-size:1.1rem; font-weight: var(--font-normal)}
+.skills-heading{margin:0 0 16px; font-size:1.1rem; font-weight: var(--font-semi-bold)}
 .skills-tags{list-style:none; padding:0; margin:16px 0 0; display:flex; flex-wrap:wrap; gap:10px}
 
 /* Default skill tags styling */
