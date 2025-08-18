@@ -3,6 +3,28 @@ const navMenu = document.getElementById('nav-menu'),
       navToggle = document.getElementById('nav-toggle'),
       navClose = document.getElementById('nav-close');
 
+// Auto-close timer variable
+let menuAutoCloseTimer;
+
+// Function to close the menu
+function closeMenu() {
+    navMenu.classList.remove('show-menu');
+    // Clear any existing timer
+    if (menuAutoCloseTimer) {
+        clearTimeout(menuAutoCloseTimer);
+        menuAutoCloseTimer = null;
+    }
+}
+
+// Function to open the menu with auto-close timer
+function openMenu() {
+    navMenu.classList.add('show-menu');
+    // Set auto-close timer for 3 seconds
+    menuAutoCloseTimer = setTimeout(() => {
+        closeMenu();
+    }, 3000);
+}
+
 /*===== MENU SHOW/HIDE (toggle) =====*/
 /* Validate if constant exists */
 if(navToggle) {
@@ -10,10 +32,10 @@ if(navToggle) {
         const isOpen = navMenu.classList.contains('show-menu');
         if (isOpen) {
             // Second click closes
-            navMenu.classList.remove('show-menu');
+            closeMenu();
         } else {
-            // Open and wait for user to close manually
-            navMenu.classList.add('show-menu');
+            // Open with auto-close timer
+            openMenu();
         }
     });
 }
@@ -22,17 +44,23 @@ if(navToggle) {
 /* Validate if constant exists */
 if(navClose) {
     navClose.addEventListener('click', () => {
-        navMenu.classList.remove('show-menu');
+        closeMenu();
     });
 }
+
+/*===== CLOSE MENU ON SCROLL =====*/
+window.addEventListener('scroll', () => {
+    if (navMenu.classList.contains('show-menu')) {
+        closeMenu();
+    }
+});
 
 /*==================== REMOVE MENU MOBILE ====================*/
 const navLink = document.querySelectorAll('.nav__link');
 
 function linkAction() {
-    const navMenu = document.getElementById('nav-menu');
-    // When we click on each nav__link, we remove the show-menu class
-    navMenu.classList.remove('show-menu');
+    // When we click on each nav__link, close the menu
+    closeMenu();
 }
 navLink.forEach(n => n.addEventListener('click', linkAction));
 
@@ -583,7 +611,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const css = () => getComputedStyle(document.body);
   const accentCol = () => (css().getPropertyValue('--first-color').trim() || '#3b82f6');
   const borderCol = () => (css().getPropertyValue('--scroll-bar-color').trim() || '#e5e7eb');
-  const textCol = () => (css().getPropertyValue('--title-color').trim() || '#0a0a0a');
+  const textCol = () => (css().getPropertyValue('--text-color').trim() || '#0a0a0a');
 
   // Word-wrap helper for point labels (returns array of lines)
   function wrapLabel(text, maxLen = 14){
