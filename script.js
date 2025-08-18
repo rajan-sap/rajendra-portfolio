@@ -631,6 +631,13 @@ document.addEventListener('DOMContentLoaded', function() {
     return lines;
   }
 
+  // Responsive padding and font size based on screen width
+  const isMobile = window.innerWidth <= 600;
+  const chartPadding = isMobile ? 35 : 20;
+  const labelFontSize = isMobile ? 10 : 12;
+  const labelPadding = isMobile ? 10 : 6;
+  const maxLabelLength = isMobile ? 12 : 16;
+
   const chart = new Chart(canvas, {
     type: 'radar',
     data: {
@@ -659,7 +666,7 @@ document.addEventListener('DOMContentLoaded', function() {
     options: {
       responsive: true,
       maintainAspectRatio: true,
-      layout: { padding: 20 }, // reduce clipping of wrapped labels
+      layout: { padding: chartPadding }, // dynamic padding based on screen size
       scales: {
         r: {
           angleLines: { color: borderCol() },
@@ -668,9 +675,9 @@ document.addEventListener('DOMContentLoaded', function() {
           suggestedMax: 100,
           pointLabels: {
             color: textCol(),
-            font: { size: 12, weight: 600 },
-            padding: 6,
-            callback: (label) => wrapLabel(label, 16)
+            font: { size: labelFontSize, weight: 600 },
+            padding: labelPadding,
+            callback: (label) => wrapLabel(label, maxLabelLength)
           },
           ticks: { display: false }
         }
@@ -693,8 +700,31 @@ document.addEventListener('DOMContentLoaded', function() {
     chart.update();
   };
 
+  // Handle responsive layout changes
+  const updateResponsiveLayout = () => {
+    const isMobile = window.innerWidth <= 600;
+    const chartPadding = isMobile ? 35 : 20;
+    const labelFontSize = isMobile ? 10 : 12;
+    const labelPadding = isMobile ? 10 : 6;
+    const maxLabelLength = isMobile ? 12 : 16;
+    
+    chart.options.layout.padding = chartPadding;
+    chart.options.scales.r.pointLabels.font.size = labelFontSize;
+    chart.options.scales.r.pointLabels.padding = labelPadding;
+    chart.options.scales.r.pointLabels.callback = (label) => wrapLabel(label, maxLabelLength);
+    chart.update();
+  };
+
+  // Window resize handler with debouncing
+  let resizeTimeout;
+  const handleResize = () => {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(updateResponsiveLayout, 150);
+  };
+
   const themeBtn = document.getElementById('theme-toggle');
   themeBtn && themeBtn.addEventListener('click', () => setTimeout(applyTheme, 0));
+  window.addEventListener('resize', handleResize);
   const mo = new MutationObserver(applyTheme);
   mo.observe(document.body, { attributes:true, attributeFilter:['class'] });
 })();
