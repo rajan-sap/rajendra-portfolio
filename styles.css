@@ -838,7 +838,7 @@ body:not(.dark-theme) .hero__info-item:hover {
 }
 
 .hero__image-border:hover .hero__img {
-  transform: scale(1.05);
+  transform: scale(0.97);
 }
 
 .hero__image-border:hover {
