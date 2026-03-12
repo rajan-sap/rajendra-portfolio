@@ -12,9 +12,9 @@
   const ctx = canvas.getContext('2d');
   let particles = [];
   let mouse = { x: null, y: null };
-  const PARTICLE_COUNT = 80;
-  const CONNECTION_DISTANCE = 150;
-  const MOUSE_RADIUS = 180;
+  const PARTICLE_COUNT = 50;
+  const CONNECTION_DISTANCE = 120;
+  const MOUSE_RADIUS = 150;
 
   function resizeCanvas() {
     canvas.width = window.innerWidth;
@@ -62,8 +62,8 @@
     }
 
     draw() {
-      const alpha = isDark() ? 0.5 : 0.3;
-      const color = isDark() ? `rgba(0, 212, 255, ${alpha})` : `rgba(2, 132, 199, ${alpha})`;
+      const alpha = isDark() ? 0.2 : 0.25;
+      const color = isDark() ? `rgba(59, 130, 246, ${alpha})` : `rgba(59, 130, 246, ${alpha})`;
       ctx.beginPath();
       ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
       ctx.fillStyle = color;
@@ -79,8 +79,8 @@
   }
 
   function drawConnections() {
-    const lineAlpha = isDark() ? 0.08 : 0.05;
-    const lineColor = isDark() ? '0, 212, 255' : '2, 132, 199';
+    const lineAlpha = isDark() ? 0.05 : 0.04;
+    const lineColor = isDark() ? '59, 130, 246' : '59, 130, 246';
     for (let i = 0; i < particles.length; i++) {
       for (let j = i + 1; j < particles.length; j++) {
         const dx = particles[i].x - particles[j].x;
@@ -327,8 +327,14 @@
   const contactForm = document.getElementById('contact-form');
   const contactStatus = document.getElementById('contact-status');
 
+  // EmailJS configuration - Replace with your credentials
+  // Get these from https://www.emailjs.com/
+  const EMAILJS_PUBLIC_KEY = 'YOUR_PUBLIC_KEY';
+  const EMAILJS_SERVICE_ID = 'YOUR_SERVICE_ID';
+  const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID';
+
   if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
+    contactForm.addEventListener('submit', async (e) => {
       e.preventDefault();
 
       const name = contactForm.querySelector('#name').value.trim();
@@ -341,20 +347,38 @@
         return;
       }
 
-      // Simulate send (replace with actual backend integration)
       contactStatus.textContent = 'Sending...';
       contactStatus.className = 'contact__status';
 
-      setTimeout(() => {
-        contactStatus.textContent = 'Message sent successfully!';
-        contactStatus.className = 'contact__status success';
-        contactForm.reset();
+      try {
+        // Initialize EmailJS (replace with your public key)
+        if (typeof emailjs !== 'undefined') {
+          await emailjs.sendForm(
+            EMAILJS_SERVICE_ID,
+            EMAILJS_TEMPLATE_ID,
+            contactForm,
+            EMAILJS_PUBLIC_KEY
+          );
+          contactStatus.textContent = 'Message sent successfully!';
+          contactStatus.className = 'contact__status success';
+          contactForm.reset();
+        } else {
+          // Fallback if EmailJS not loaded
+          contactStatus.textContent = 'EmailJS not loaded. Please try again.';
+          contactStatus.className = 'contact__status error';
+          return;
+        }
+      } catch (error) {
+        console.error('EmailJS Error:', error);
+        contactStatus.textContent = 'Failed to send message. Please try again.';
+        contactStatus.className = 'contact__status error';
+        return;
+      }
 
-        setTimeout(() => {
-          contactStatus.textContent = '';
-          contactStatus.className = 'contact__status';
-        }, 4000);
-      }, 1200);
+      setTimeout(() => {
+        contactStatus.textContent = '';
+        contactStatus.className = 'contact__status';
+      }, 4000);
     });
   }
 
