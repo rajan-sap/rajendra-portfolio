@@ -1,728 +1,694 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rajendra Sapkota - AI Research Engineer Portfolio</title>
-    <meta name="description" content="AI Research Engineer & Team Leader - Portfolio showcasing machine learning, deep learning, and data science projects">
-    
-    <!-- Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Google Fonts -->
+    <title>Rajendra Sapkota — ML/AI Engineer &amp; Consultant</title>
+    <meta name="description" content="ML/AI Engineer & Consultant — Generative AI, RAG Pipelines, Multi-Agent Systems, Computer Vision. Ph.D. with 7+ years building production ML systems.">
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Custom CSS -->
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Header/Navigation -->
-    <header class="header" id="header">
-        <nav class="nav container">
-            <div class="nav__logo">
-                <a href="#home">RS</a>
+
+    <!-- ===== PARTICLE CANVAS BACKGROUND ===== -->
+    <canvas id="neural-canvas"></canvas>
+
+    <!-- ===== NAVIGATION ===== -->
+    <header class="nav" id="nav">
+        <div class="nav__inner">
+            <a href="#hero" class="nav__logo">
+                <span class="logo__bracket">&lt;</span>RS<span class="logo__bracket">/&gt;</span>
+            </a>
+            <ul class="nav__links" id="nav-links">
+                <li><a href="#hero" class="nav__link active">Home</a></li>
+                <li><a href="#about" class="nav__link">About</a></li>
+                <li><a href="#experience" class="nav__link">Experience</a></li>
+                <li><a href="#skills" class="nav__link">Skills</a></li>
+                <li><a href="#projects" class="nav__link">Projects</a></li>
+                <li><a href="#publications" class="nav__link">Research</a></li>
+                <li><a href="#certifications" class="nav__link">Certifications</a></li>
+                <li><a href="#contact" class="nav__link">Contact</a></li>
+            </ul>
+            <div class="nav__actions">
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+                    <i class="fas fa-sun"></i>
+                </button>
+                <button class="nav__hamburger" id="nav-hamburger" aria-label="Toggle menu">
+                    <span></span><span></span><span></span>
+                </button>
             </div>
-            
-            <div class="nav__menu" id="nav-menu">
-                <ul class="nav__list">
-                    <li class="nav__item">
-                        <a href="#home" class="nav__link active-link">Home</a>
-                    </li>
-                    <li class="nav__item">
-                        <a href="#experience" class="nav__link">Experience</a>
-                    </li>
-                    <li class="nav__item">
-                        <a href="#skills" class="nav__link">Skills</a>
-                    </li>
-                    <li class="nav__item">
-                        <a href="#projects" class="nav__link">Projects</a>
-                    </li>
-                    <li class="nav__item">
-                        <a href="#contact" class="nav__link">Contact</a>
-                    </li>
-                </ul>
-                
-                <div class="nav__close" id="nav-close">
-                    <i class="fas fa-times"></i>
-                </div>
-            </div>
-            
-            <!-- Theme toggle button -->
-            <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
-                <i class="fas fa-moon" id="theme-toggle-icon"></i>
-            </button>
-            
-            <div class="nav__toggle" id="nav-toggle">
-                <i class="fas fa-bars"></i>
-            </div>
-        </nav>
+        </div>
     </header>
 
-    <!-- Left Navigation (appears on scroll) -->
-    <nav class="left-nav" id="left-nav">
-        <div class="left-nav__container">
-            <div class="left-nav__logo">
-                <a href="#home">RS</a>
-            </div>
-            <ul class="left-nav__list">
-                <li class="left-nav__item">
-                    <a href="#home" class="left-nav__link" title="Home & About">
-                        <i class="fas fa-home"></i>
-                    </a>
-                </li>
-                <li class="left-nav__item">
-                    <a href="#experience" class="left-nav__link" title="Experience">
-                        <i class="fas fa-briefcase"></i>
-                    </a>
-                </li>
-                <li class="left-nav__item">
-                    <a href="#skills" class="left-nav__link" title="Skills">
-                        <i class="fas fa-hammer"></i>
-                    </a>
-                </li>
-                <li class="left-nav__item">
-                    <a href="#projects" class="left-nav__link" title="Projects">
-                        <i class="fas fa-folder-open"></i>
-                    </a>
-                </li>
-                <li class="left-nav__item">
-                    <a href="#contact" class="left-nav__link" title="Contact">
-                        <i class="fas fa-envelope"></i>
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </nav>
+    <!-- ===== MOBILE MENU ===== -->
+    <div class="mobile-menu" id="mobile-menu">
+        <ul class="mobile-menu__links">
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#publications">Research</a></li>
+            <li><a href="#certifications">Certifications</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </div>
 
-    <main class="main">
-        <!-- Hero/About Combined Section -->
-        <section class="hero section" id="home">
-            <div class="section-container">
-                <div class="hero__container container">
-                    <div class="hero__content">
-                        <!-- Mobile: Image first, Desktop: Text first -->
-                        <div class="hero__image hero__image--mobile">
-                            <div class="hero__image-container">
-                                <div class="hero__image-border">
-                                    <img src="rajan1.jpg" alt="Rajendra Sapkota - AI Engineer" class="hero__img" width="600" height="600" decoding="async" fetchpriority="high">
-                                </div>
-                                <div class="hero__image-overlay"></div>
-                            </div>
+    <main>
+
+        <!-- ===== HERO SECTION ===== -->
+        <section class="hero" id="hero">
+            <div class="hero__content">
+                <div class="hero__text">
+                    <div class="hero__terminal">
+                        <div class="terminal__bar">
+                            <span class="terminal__dot terminal__dot--red"></span>
+                            <span class="terminal__dot terminal__dot--yellow"></span>
+                            <span class="terminal__dot terminal__dot--green"></span>
+                            <span class="terminal__title">rajendra@ai-lab:~</span>
                         </div>
-                        
-                        <div class="hero__data">
-                            <!-- Mobile: Info cards after image -->
-                            <div class="hero__info hero__info--mobile">
-                                <a href="#contact" class="hero__info-item" onclick="showLocationInfo(event)">
-                                    <i class="fas fa-map-marker-alt hero__icon"></i>
-                                    <div>
-                                        <span class="hero__info-title">Location</span>
-                                        <span class="hero__info-subtitle">Kristiansand, Norway</span>
-                                    </div>
-                                </a>
-                                
-                                <a href="#experience" class="hero__info-item" onclick="showEducationInfo(event)">
-                                    <i class="fas fa-graduation-cap hero__icon"></i>
-                                    <div>
-                                        <span class="hero__info-title">Education</span>
-                                        <span class="hero__info-subtitle">Ph.D. Research Fellow</span>
-                                    </div>
-                                </a>
-                                
-                                <a href="#experience" class="hero__info-item" onclick="showExperienceInfo(event)">
-                                    <i class="fas fa-briefcase hero__icon"></i>
-                                    <div>
-                                        <span class="hero__info-title">Experience</span>
-                                        <span class="hero__info-subtitle">7+ years in AI/ML</span>
-                                    </div>
-                                </a>
-                            </div>
-                            
-                            <span class="hero__greeting">Hello, I'm</span>
-                            <h1 class="hero__name">Rajendra Sapkota</h1>
-                            <h3 class="hero__profession">AI Engineer</h3>
-                            <p class="hero__description">
-                                Ph.D. candidate in applied AI, specializing in machine learning, deep learning, computer vision, image analysis and generative models. I bridge the gap between cutting-edge 
-                                research and commercial viability, with proven experience leading teams, managing the full product lifecycle, and delivering robust AI solutions through client collaboration.
-                                Currently working on intelligent automation by leveraging multi-agent systems (crewAI), LLMs (via MCP), and workflow orchestration (n8n) to solve business challenges.
-                                
+                        <div class="terminal__body">
+                            <p class="terminal__line"><span class="terminal__prompt">$</span> <span class="terminal__cmd">whoami</span></p>
+                            <p class="terminal__output" id="typing-name"></p>
+                            <p class="terminal__line"><span class="terminal__prompt">$</span> <span class="terminal__cmd">cat role.txt</span></p>
+                            <p class="terminal__output terminal__role" id="typing-role"></p>
+                            <p class="terminal__line"><span class="terminal__prompt">$</span> <span class="terminal__cmd">echo $STATUS</span></p>
+                            <p class="terminal__output terminal__status">Building intelligent systems that matter <span class="terminal__cursor">|</span></p>
+                        </div>
+                    </div>
+                    <p class="hero__subtitle">
+                        7+ Years in AI/ML &middot; Generative AI &middot; RAG Pipelines &middot; Multi-Agent Systems &middot; Computer Vision &middot; Ph.D. in Applied AI
+                    </p>
+                    <div class="hero__cta">
+                        <a href="#projects" class="btn btn--primary">
+                            <i class="fas fa-rocket"></i> View Projects
+                        </a>
+                        <a href="#contact" class="btn btn--ghost">
+                            <i class="fas fa-paper-plane"></i> Get in Touch
+                        </a>
+                        <a href="https://github.com/rajan-sap" target="_blank" rel="noopener noreferrer" class="btn btn--icon" aria-label="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://linkedin.com/in/rajendra0921" target="_blank" rel="noopener noreferrer" class="btn btn--icon" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="hero__image">
+                    <div class="hero__image-wrapper">
+                        <img src="profile.jpg" alt="Rajendra Sapkota" width="420" height="420" loading="eager">
+                        <div class="hero__image-glow"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="hero__scroll-indicator">
+                <span>Scroll</span>
+                <div class="scroll-line"></div>
+            </div>
+        </section>
+
+        <!-- ===== ABOUT SECTION ===== -->
+        <section class="section" id="about">
+            <div class="container">
+                <h2 class="section__title reveal">
+                    <span class="section__number">01.</span> About Me
+                </h2>
+                <div class="about__grid">
+                    <div class="about__text reveal">
+                        <p>
+                            ML/AI Engineer &amp; Consultant with 7+ years of experience spanning <strong>PhD research</strong> 
+                            and <strong>production ML systems</strong>. Expert in architecting <strong>Generative AI</strong> solutions, 
+                            including <strong>Multi-Agent workflows</strong> and complex <strong>RAG pipelines</strong>. 
+                            Proven track record of scaling engineering teams 6x and delivering end-to-end Vertical SaaS products.
+                        </p>
+                        <p>
+                            Specialist in transforming complex unstructured data into high-impact insights that drive 
+                            strategic decision-making. Currently building intelligent automation with <strong>CrewAI</strong>, 
+                            <strong>LangChain</strong>, <strong>LlamaIndex</strong>, and <strong>n8n</strong>.
+                        </p>
+                    </div>
+                    <div class="about__stats reveal">
+                        <div class="stat-card">
+                            <span class="stat__number" data-target="7">0</span><span class="stat__plus">+</span>
+                            <span class="stat__label">Years in AI/ML</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat__number" data-target="10">0</span><span class="stat__plus">+</span>
+                            <span class="stat__label">Projects Delivered</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat__number" data-target="5">0</span><span class="stat__plus">+</span>
+                            <span class="stat__label">Publications</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat__number" data-target="6">0</span><span class="stat__plus">x</span>
+                            <span class="stat__label">Team Scaled</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== EXPERIENCE SECTION ===== -->
+        <section class="section" id="experience">
+            <div class="container">
+                <h2 class="section__title reveal">
+                    <span class="section__number">02.</span> Experience &amp; Education
+                </h2>
+
+                <div class="timeline reveal">
+                    <!-- Experience -->
+                    <div class="timeline__item">
+                        <div class="timeline__marker"></div>
+                        <div class="timeline__card">
+                            <span class="timeline__date">Jan 2025 &mdash; Present</span>
+                            <h3 class="timeline__title">AI Engineer &amp; Consultant</h3>
+                            <span class="timeline__org">Independent Projects, Oslo, Norway</span>
+                            <p class="timeline__desc">
+                                <strong>Virtual Try-On (Vertical SaaS):</strong> Architected a Generative AI platform for high-value custom-designed fashion, 
+                                engineering AI pipelines to simulate complex garment drapes on client portraits. Built serverless Firebase SaaS 
+                                infrastructure with OTP-secured &ldquo;Selection Lock&rdquo; and usage-based billing.<br><br>
+                                <strong>Advanced Document Intelligence (RAG):</strong> Engineered a high-precision QA pipeline for 1000+ pages of complex PDFs 
+                                with multi-column layouts and technical drawings. Implemented Agentic Query Decomposition and Hybrid Search with 
+                                layout-aware parsing, reducing hallucination rates by 90% (evaluated via Ragas).<br><br>
+                                <strong>Multi-Agent Autonomous Newsroom:</strong> Orchestrated a multi-agent system (Finder, Writer, Validator, Editor) 
+                                to automate the professional editorial lifecycle with stateful feedback loops and critique gates.
                             </p>
-                            
-                            <!-- Desktop: Info cards in text section -->
-                            <div class="hero__info hero__info--desktop">
-                                <a href="#contact" class="hero__info-item" onclick="showLocationInfo(event)">
-                                    <i class="fas fa-map-marker-alt hero__icon"></i>
-                                    <div>
-                                        <span class="hero__info-title">Location</span>
-                                        <span class="hero__info-subtitle">Kristiansand, Norway</span>
-                                    </div>
-                                </a>
-                                
-                                <a href="#experience" class="hero__info-item" onclick="showEducationInfo(event)">
-                                    <i class="fas fa-graduation-cap hero__icon"></i>
-                                    <div>
-                                        <span class="hero__info-title">Education</span>
-                                        <span class="hero__info-subtitle">Ph.D. Research Fellow</span>
-                                    </div>
-                                </a>
-                                
-                                <a href="#experience" class="hero__info-item" onclick="showExperienceInfo(event)">
-                                    <i class="fas fa-briefcase hero__icon"></i>
-                                    <div>
-                                        <span class="hero__info-title">Experience</span>
-                                        <span class="hero__info-subtitle">7+ years in AI/ML</span>
-                                    </div>
-                                </a>
-                            </div>
-                            
-                            <div class="hero__buttons">
-                                <a href="#projects" class="button hero__button">View My Work</a>
-                                <a href="#contact" class="button button--outline">Get In Touch</a>  
-
-                            </div>
-                        </div>
-                        
-                        <!-- Desktop: Image on the right -->
-                        <div class="hero__image hero__image--desktop">
-                            <div class="hero__image-container">
-                                <div class="hero__image-border">
-                                    <img src="rajan4.png" alt="Rajendra Sapkota - AI Research Engineer" class="hero__img" width="500" height="500" decoding="async">
-                                </div>
-                                <div class="hero__image-overlay"></div>
+                            <div class="timeline__tags">
+                                <span>Generative AI</span><span>RAG</span><span>LangChain</span><span>LlamaIndex</span>
+                                <span>CrewAI</span><span>Firebase</span><span>FastAPI</span><span>Ragas</span>
                             </div>
                         </div>
                     </div>
-                </div>
-                
-                <!-- Background Effects -->
-                <div class="hero__bg-effects">
-                    <div class="hero__shape hero__shape-1"></div>
-                    <div class="hero__shape hero__shape-2"></div>
-                    <div class="hero__shape hero__shape-3"></div>
-                    <div class="hero__shape hero__shape-2"></div>
-                    <div class="hero__shape hero__shape-3"></div>
+
+                    <div class="timeline__item">
+                        <div class="timeline__marker"></div>
+                        <div class="timeline__card">
+                            <span class="timeline__date">Dec 2019 &mdash; Dec 2024</span>
+                            <h3 class="timeline__title">PhD Research Candidate &mdash; Machine Learning &amp; AI</h3>
+                            <span class="timeline__org">UiT &mdash; The Arctic University of Norway, Troms&oslash;</span>
+                            <p class="timeline__desc">
+                                Formulated novel research objectives for automated analysis of atmospheric imagery using deep learning. 
+                                Designed lightweight CNN architectures achieving 98%+ classification accuracy with rigorous cross-validation 
+                                and uncertainty quantification. Applied unsupervised learning (clustering, PCA) to discover latent patterns in 
+                                high-dimensional time series data. Built automated data quality pipelines and anomaly detection systems. 
+                                Developed model interpretability frameworks using Grad-CAM and saliency maps. Authored peer-reviewed 
+                                publications and presented at international conferences.
+                            </p>
+                            <div class="timeline__tags">
+                                <span>PyTorch</span><span>Deep Learning</span><span>Computer Vision</span>
+                                <span>Docker</span><span>W&amp;B</span><span>GPU Training</span><span>PCA</span><span>Clustering</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline__item">
+                        <div class="timeline__marker"></div>
+                        <div class="timeline__card">
+                            <span class="timeline__date">Aug 2020 &mdash; Nov 2023</span>
+                            <h3 class="timeline__title">Teaching Assistant / Lecturer</h3>
+                            <span class="timeline__org">UiT &mdash; The Arctic University of Norway, Troms&oslash;</span>
+                            <p class="timeline__desc">
+                                Designed and delivered comprehensive course materials, labs, and lectures for web development 
+                                and industrial automation courses. Led hands-on labs utilizing sensors, communication protocols, 
+                                and MATLAB-based solutions. Mentored students in technical problem-solving and fostered collaborative learning.
+                            </p>
+                            <div class="timeline__tags">
+                                <span>Teaching</span><span>Web Dev</span><span>MATLAB</span>
+                                <span>Industrial Automation</span><span>HTML5</span><span>CSS3</span><span>PHP</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline__item">
+                        <div class="timeline__marker"></div>
+                        <div class="timeline__card">
+                            <span class="timeline__date">Mar 2018 &mdash; Oct 2019</span>
+                            <h3 class="timeline__title">AI Team Leader / ML Engineer</h3>
+                            <span class="timeline__org">Infodeveloper Pvt. Ltd, Lalitpur, Nepal</span>
+                            <p class="timeline__desc">
+                                Led end-to-end development of three production ML systems: intelligent chatbot (NLP), 
+                                resume parser, and vehicle number plate recognition (computer vision). Scaled the AI department 
+                                from 3 to 18 engineers in 18 months. Established best practices including model versioning, testing, 
+                                code review processes, and CI/CD pipelines. Collaborated with C-level executives to translate 
+                                business requirements into technical roadmaps.
+                            </p>
+                            <div class="timeline__tags">
+                                <span>Python</span><span>NLP</span><span>Computer Vision</span>
+                                <span>OpenCV</span><span>spaCy</span><span>PostgreSQL</span><span>CI/CD</span><span>APIs</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Education -->
+                    <div class="timeline__divider reveal">
+                        <span><i class="fas fa-graduation-cap"></i> Education</span>
+                    </div>
+
+                    <div class="timeline__item">
+                        <div class="timeline__marker timeline__marker--edu"></div>
+                        <div class="timeline__card">
+                            <span class="timeline__date">2017</span>
+                            <h3 class="timeline__title">M.Eng. Information Technology</h3>
+                            <span class="timeline__org">Frankfurt University of Applied Sciences</span>
+                        </div>
+                    </div>
+
+                    <div class="timeline__item">
+                        <div class="timeline__marker timeline__marker--edu"></div>
+                        <div class="timeline__card">
+                            <span class="timeline__date">2012</span>
+                            <h3 class="timeline__title">B.E. Electronics and Communication</h3>
+                            <span class="timeline__org">Kathmandu Engineering College</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Experience Section -->
-        <section class="experience section" id="experience">
-            <div class="section-container">
+        <!-- ===== SKILLS SECTION ===== -->
+        <section class="section" id="skills">
             <div class="container">
-                <h2 class="section__title">Experience</h2>
-                <span class="section__subtitle">My Professional Journey</span>
-                
-                <div class="experience__container">
-                    <div class="experience__content">
-                        <div class="experience__data">
-                            <div>
-                                <h3 class="experience__title">Ph.D. Research Fellow</h3>
-                                <span class="experience__subtitle">UiT, The Arctic University of Norway</span>
-                                <div class="experience__calendar">
-                                    <i class="fas fa-calendar-alt"></i>
-                                    Dec 2019 - Dec 2024
-                                </div>
-                                
+                <h2 class="section__title reveal">
+                    <span class="section__number">03.</span> Tech Stack
+                </h2>
 
-                                
-                                <div class="experience__description expandable-content">
-                                    <div class="content-preview">
-                                        Identified research objectives for the analysis of noctilucent cloud images using machine learning and AI. Implemented lightweight 
-                                        CNN architectures such as MobileNet, EfficientNet, SqueezeNet, ShuffleNet for classification problem and experimented with 
-                                        explainability methods...
-                                    </div>
-                                    <div class="content-full" style="display: none;">
-                                        <p><strong>Research Focus:</strong> Identified and formulated research objectives for the analysis of noctilucent cloud images 
-                                            using machine learning and AI, bridging the gaps in AI-driven atmospheric science.</p>
-                                        <p><strong>Technical Implementation:</strong> 
-                                            <li>Implemented lightweight CNN architectures optimized for computational efficiency while maintaining high classification accuracy. Integrated explainability methods including Grad-CAM and Saliency maps for model interpretability. <strong><a href="https://www.mdpi.com/2072-4292/14/10/2306" target="_blank" rel="noopener noreferrer">Learn more</a></strong></li>
-                                            <li>Applied KNN clustering to CNN-extracted features from NLC images, revealing latent data distributions and patterns critical for understanding atmospheric dynamics.</li>
-                                            <li>Developed a comprehensive evaluation framework to assess model performance and robustness, incorporating both quantitative metrics and qualitative analyses.</li>
-                                        </p>
-                                        <p><strong>Publications & Impact:</strong> Published research findings in peer-reviewed journals and presented at international conferences. Contributed to the atmospheric science community with applied machine learning techniques for detection and classification of noctilucent clouds. <strong><a href="https://www.mdpi.com/2072-4292/14/10/2306" target="_blank" rel="noopener noreferrer">Learn more</a></strong></p>
-                                        <p><strong>Skills Developed:</strong>
-                                            <li>Advanced theoretical understanding of machine learning and deep learning algorithms and architectures. Developed a deep understanding of supervised, unsupervised and semi-supervised learnings, CNNs, RNNs, and Transformers.</li>
-                                            <li>Scientific research, scientific writing, conference presentations, and collaboration with interdisciplinary teams.</li>
-                                            <li>Advanced PyTorch/TensorFlow usages, GPU programming, model optimization techniques, and model quantization techniques.</li>
-                                        </p>
-                                    </div>
-                                    <button class="expand-btn" onclick="toggleExperience(this)">
-                                        <i class="fas fa-chevron-down"></i> Show More
-                                    </button>
-                                </div>
-                                <!-- Skills Tags -->
-                                <div class="experience__skills">
-                                    <span class="experience__skill-tag">Python</span> 
-                                    <span class="experience__skill-tag">Deep Learning</span>
-                                    <span class="experience__skill-tag">PyTorch</span>                                
-                                    <span class="experience__skill-tag">Computer Vision</span>
-                                    <span class="experience__skill-tag">Git</span>
-                                    <span class="experience__skill-tag">Docker</span>
-                                    <span class="experience__skill-tag">Weights & Biases</span>
-                                    <span class="experience__skill-tag">GPU Training</span>
-
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="experience__data">
-                            <div>
-                                <h3 class="experience__title">Graduate Teaching Assistant/ Lecturer</h3>
-                                <span class="experience__subtitle">UiT - Dept. of Automation and Process Engineering</span>
-                                <div class="experience__calendar">
-                                    <i class="fas fa-calendar-alt"></i>
-                                    Aug 2020 - Nov 2023
-                                </div>
-                                
-                                
-                                <div class="experience__description expandable-content">
-                                    <div class="content-preview">
-                                        Designed and developed learning materials, delivered lectures, conducted labs and exams on "Web Development" course for the undergraduate students covering HTML, CSS, and PHP...
-                                    </div>
-                                    <div class="content-full" style="display: none;">
-                                        <p><strong>Course Development:</strong> Designed comprehensive web development curriculum from scratch, covering fundamental to advanced concepts in HTML5, CSS3, and PHP programming.</p>
-                                        <p><strong>Teaching Responsibilities:</strong> Delivered engaging lectures to 18+ undergraduate students per semester, facilitated hands-on lab sessions, and provided one-on-one mentoring for struggling students.</p>
-                                        <p><strong>Assessment & Evaluation:</strong> Created diverse assessment methods including group projects, and theoretical exams. Provided detailed feedback to help students improve their programming skills.</p>
-                                        
-                                    </div>
-                                    <button class="expand-btn" onclick="toggleExperience(this)">
-                                        <i class="fas fa-chevron-down"></i> Show More
-                                    </button>
-                                </div>
-                                <!-- Skills Tags -->
-                                <div class="experience__skills">
-                                    <span class="experience__skill-tag">Web Development</span>
-                                    <span class="experience__skill-tag">HTML5</span>
-                                    <span class="experience__skill-tag">CSS3</span>                                    
-                                    <span class="experience__skill-tag">PHP</span>                                    
-                                    <span class="experience__skill-tag">Teaching</span>
-                                    
-                                </div>
-                                
-                            </div>
-                        </div>
-                        
-                        <div class="experience__data">
-                            <div>
-                                <h3 class="experience__title">AI Developer / Team Lead</h3>
-                                <span class="experience__subtitle">Infodevelopers Pvt. Ltd</span>
-                                <div class="experience__calendar">
-                                    <i class="fas fa-calendar-alt"></i>
-                                    March 2018 - Aug 2019
-                                </div>
-                                
-                                
-                                
-                                <div class="experience__description expandable-content">
-                                    <div class="content-preview">
-                                        Led the rapid expansion and development of a new AI department in an established software company, developing AI solutions involving natural language processing (NLP), and computer vision (CV). Collaborated with executives, technical teams and product owners....
-                                    </div>
-                                    <div class="content-full" style="display: none;">
-                                        <p><strong>Leadership & Team Building:</strong> Played a key role in expanding the fresh AI department in a stablished software company.</p>
-                                        <p><strong>Project Portfolio:</strong> Developed multiple AI projects including sentiment analysis, chatbots, and computer vision applications.</p>
-                                        <p><strong>Client Relations:</strong> Collaborated directly with executives, technical teams and product owners.</p>
-                                        <p><strong>Technology Stack:</strong> Python, TensorFlow, PyTorch, OpenCV, NLTK, spaCy, Docker, Git MongoDB, PostgreSQL, APIs, and various ML frameworks.</p>
-                                    </div>
-                                    <button class="expand-btn" onclick="toggleExperience(this)">
-                                        <i class="fas fa-chevron-down"></i> Show More
-                                    </button>
-                                </div>
-                                <!-- Skills Tags -->
-                                <div class="experience__skills">
-                                    <span class="experience__skill-tag">Python</span>
-                                    <span class="experience__skill-tag">NLP</span>                                    
-                                    <span class="experience__skill-tag">Computer Vision</span>
-                                    <span class="experience__skill-tag">PyTorch</span>
-                                    <span class="experience__skill-tag">OpenCV</span>
-                                    <span class="experience__skill-tag">NLTK</span>
-                                    <span class="experience__skill-tag">spaCy</span>
-                                    <span class="experience__skill-tag">Docker</span>                                    
-                                    <span class="experience__skill-tag">PostgreSQL</span>
-                                    <span class="experience__skill-tag">APIs</span>
-                                    
-                                    
-                                </div>
-                            </div>
+                <div class="skills__grid reveal">
+                    <div class="skill-group">
+                        <h3 class="skill-group__title"><i class="fas fa-brain"></i> Core AI/ML</h3>
+                        <div class="skill-group__items">
+                            <div class="skill-chip">Machine Learning</div>
+                            <div class="skill-chip">Deep Learning</div>
+                            <div class="skill-chip">Computer Vision</div>
+                            <div class="skill-chip">NLP</div>
+                            <div class="skill-chip">Generative AI</div>
+                            <div class="skill-chip">RAG Pipelines</div>
+                            <div class="skill-chip">AI Agents</div>
+                            <div class="skill-chip">LLM Fine-tuning</div>
+                            <div class="skill-chip">Object Detection</div>
+                            <div class="skill-chip">Instance Segmentation</div>
+                            <div class="skill-chip">Image Analysis</div>
+                            <div class="skill-chip">Data Science</div>
+                            <div class="skill-chip">Feature Engineering</div>
                         </div>
                     </div>
-                    
-                    <div class="experience__content">
-                        <h3 class="experience__section-title">Education</h3>
-                        
-    
-                        
-                        <div class="experience__data">
-                            <div>
-                                <h3 class="experience__title">M.Eng. Information Technology</h3>
-                                <span class="experience__subtitle">Frankfurt University of Applied Sciences</span>
-                                <div class="experience__calendar">
-                                    <i class="fas fa-calendar-alt"></i>
-                                    2017
-                                </div>
-                            </div>
+
+                    <div class="skill-group">
+                        <h3 class="skill-group__title"><i class="fas fa-code"></i> Languages</h3>
+                        <div class="skill-group__items">
+                            <div class="skill-chip skill-chip--accent">Python</div>
+                            <div class="skill-chip">TypeScript</div>
+                            <div class="skill-chip">JavaScript</div>
+                            <div class="skill-chip">SQL</div>
+                            <div class="skill-chip">Node.js</div>
+                            <div class="skill-chip">PHP</div>
+                            <div class="skill-chip">Bash</div>
+                            <div class="skill-chip">HTML/CSS</div>
                         </div>
-                        
-                        <div class="experience__data">
-                            <div>
-                                <h3 class="experience__title">B.E. Electronics and Communication</h3>
-                                <span class="experience__subtitle">Kathmandu Engineering College</span>
-                                <div class="experience__calendar">
-                                    <i class="fas fa-calendar-alt"></i>
-                                    2012
-                                </div>
-                            </div>
+                    </div>
+
+                    <div class="skill-group">
+                        <h3 class="skill-group__title"><i class="fas fa-layer-group"></i> Frameworks &amp; Libraries</h3>
+                        <div class="skill-group__items">
+                            <div class="skill-chip skill-chip--accent">PyTorch</div>
+                            <div class="skill-chip skill-chip--accent">TensorFlow</div>
+                            <div class="skill-chip">Keras</div>
+                            <div class="skill-chip">Scikit-learn</div>
+                            <div class="skill-chip">XGBoost</div>
+                            <div class="skill-chip">OpenCV</div>
+                            <div class="skill-chip">Transformers</div>
+                            <div class="skill-chip">spaCy</div>
+                            <div class="skill-chip">NLTK</div>
+                            <div class="skill-chip">NumPy</div>
+                            <div class="skill-chip">Pandas</div>
+                            <div class="skill-chip">Polars</div>
+                            <div class="skill-chip">SciPy</div>
+                            <div class="skill-chip">FastAPI</div>
+                            <div class="skill-chip">Flask</div>
+                            <div class="skill-chip">Django</div>
+                            <div class="skill-chip">Streamlit</div>
+                        </div>
+                    </div>
+
+                    <div class="skill-group">
+                        <h3 class="skill-group__title"><i class="fas fa-tools"></i> MLOps &amp; Cloud</h3>
+                        <div class="skill-group__items">
+                            <div class="skill-chip">Docker</div>
+                            <div class="skill-chip">Git</div>
+                            <div class="skill-chip">CI/CD</div>
+                            <div class="skill-chip">MLflow</div>
+                            <div class="skill-chip">Weights &amp; Biases</div>
+                            <div class="skill-chip">AWS SageMaker</div>
+                            <div class="skill-chip">GCP Vertex AI</div>
+                            <div class="skill-chip">Firebase</div>
+                            <div class="skill-chip">Linux</div>
+                            <div class="skill-chip">GPU Programming</div>
+                            <div class="skill-chip">APIs</div>
+                        </div>
+                    </div>
+
+                    <div class="skill-group">
+                        <h3 class="skill-group__title"><i class="fas fa-chart-bar"></i> Data &amp; Visualization</h3>
+                        <div class="skill-group__items">
+                            <div class="skill-chip">Matplotlib</div>
+                            <div class="skill-chip">Seaborn</div>
+                            <div class="skill-chip">Plotly</div>
+                            <div class="skill-chip">Tableau</div>
+                            <div class="skill-chip">PostgreSQL</div>
+                            <div class="skill-chip">MongoDB</div>
+                            <div class="skill-chip">MySQL</div>
+                            <div class="skill-chip">ChromaDB</div>
+                            <div class="skill-chip">Neo4j</div>
+                            <div class="skill-chip">Hypothesis Testing</div>
+                        </div>
+                    </div>
+
+                    <div class="skill-group">
+                        <h3 class="skill-group__title"><i class="fas fa-robot"></i> Gen AI &amp; Agents</h3>
+                        <div class="skill-group__items">
+                            <div class="skill-chip skill-chip--accent">LangChain</div>
+                            <div class="skill-chip skill-chip--accent">LlamaIndex</div>
+                            <div class="skill-chip skill-chip--accent">CrewAI</div>
+                            <div class="skill-chip skill-chip--accent">RAG / Ragas</div>
+                            <div class="skill-chip">n8n</div>
+                            <div class="skill-chip">Multi-Agent Systems</div>
+                            <div class="skill-chip">LLM Fine-tuning</div>
+                            <div class="skill-chip">Workflow Orchestration</div>
                         </div>
                     </div>
                 </div>
-            </div>
             </div>
         </section>
 
-        <!-- Skills Section -->
-        <section class="skills section" id="skills">
-            <div class="section-container">
+        <!-- ===== PROJECTS SECTION ===== -->
+        <section class="section" id="projects">
             <div class="container">
-                <h2 class="section__title">Skills and Specializations</h2>
-                <span class="section__subtitle">Core competencies and tooling</span>
-                
-                <div class="skills-two-col">
-                  <div>
-                    <div class="skills-chart-card">
-                      <h3 class="skills-heading">Core Skills</h3>
-                      <canvas id="skillsRadar" aria-label="Skills radar chart" role="img"></canvas>
-                    </div>
-                  </div>
-                  <div>
-                    <div class="skills-tags-card">
-                    <h3 class="skills-heading">Specializations</h3>
-                    <ul class="skills-tags">
-                      <li>Python</li>
-                      <li>AI</li>
-                      <li>Machine Learning</li>
-                      <li>Deep Learning</li>
-                      <li>Data Science</li>
-                      <li>Computer Vision</li>  
-                      <li>Image Analysis</li>
-                      <li>CNN</li>  
-                      <li>GANs</li> 
-                      <li>AI Agents</li>
-                      <li>Automation</li>            
-                      <li>Web Development</li>
-                      <li>Natural Language Processing</li>                       
-                                     
-                    </ul>
-                    </div>
-                  </div>
+                <h2 class="section__title reveal">
+                    <span class="section__number">04.</span> Featured Projects
+                </h2>
+
+                <div class="projects__filters reveal">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="genai">Gen AI / RAG</button>
+                    <button class="filter-btn" data-filter="cv">Computer Vision</button>
+                    <button class="filter-btn" data-filter="nlp">NLP</button>
+                    <button class="filter-btn" data-filter="agents">AI Agents</button>
+                    <button class="filter-btn" data-filter="web">Web</button>
                 </div>
 
-                <div class="skills-tags-card skills-tags-card--full-width">
-                    <h2 class="skills-heading">Frameworks, Libraries & Tools</h2>
-                    <ul class="skills-tags">
-                        <li>PyTorch </li>
-                        <li>TensorFlow</li>
-                        <li>Keras</li>
-                        <li>OpenCV</li>
-                        <li>NLTK</li>
-                        <li>spaCy</li>
-                        <li>Transformers</li>
-                        <li>Scikit-learn</li>
-                        <li>NumPy</li>
-                        <li>SciPy</li>
-                        <li>Pandas</li>
-                        <li>Polars</li>
-                        <li>Matplotlib</li>
-                        <li>Seaborn</li>
-                        <li>Plotly</li>
-                        <li>Chart.js</li>
-                        <li>MLflow</li>
-                        <li>Weights & Biases</li>
-                        <li>Django</li>
-                        <li>Flask</li>
-                        <li>FastAPI</li>
-                        <li>Git</li>
-                        <li>Docker</li>
-                        <li>Azure Databricks</li>
-                        <li>Vertex AI</li>
-                        <li>IBM Watson</li>
-                        <li>Tableau</li>
-                        <li>VS Code</li>
-                        <li>Jupyter Notebook</li>
-                        
-                        <li>PyCharm</li>
-                        <li>Linux</li>
-                        <li>Bash</li>
-                        <li>HTML</li>
-                        <li>CSS</li>
-                        <li>JavaScript</li>
-                        <li>PHP</li>
-                        <li>MySQL</li>
-                        <li>PostgreSQL</li>
-                        <li>MongoDB</li>
-                    </ul>
-                  </div>
+                <div class="projects__grid reveal">
+                    <div class="project-card" data-category="genai">
+                        <div class="project-card__header">
+                            <i class="fas fa-shirt project-card__icon"></i>
+                            <div class="project-card__links">
+                                <a href="https://github.com/rajan-sap" target="_blank" rel="noopener noreferrer" aria-label="Code"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                        <h3 class="project-card__title">Virtual Try-On (Vertical SaaS)</h3>
+                        <p class="project-card__desc">Generative AI platform for custom-designed fashion, simulating garment drapes on client portraits with serverless Firebase infrastructure and usage-based billing.</p>
+                        <div class="project-card__stack">
+                            <span>Generative AI</span><span>Firebase</span><span>FastAPI</span><span>SaaS</span>
+                        </div>
+                    </div>
 
-            </div>
+                    <div class="project-card" data-category="genai">
+                        <div class="project-card__header">
+                            <i class="fas fa-file-search project-card__icon"></i>
+                            <div class="project-card__links">
+                                <a href="https://github.com/rajan-sap" target="_blank" rel="noopener noreferrer" aria-label="Code"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                        <h3 class="project-card__title">Advanced Document Intelligence (RAG)</h3>
+                        <p class="project-card__desc">High-precision QA pipeline for 1000+ pages of complex PDFs with Agentic Query Decomposition, Hybrid Search, and layout-aware parsing. Reduced hallucinations by 90%.</p>
+                        <div class="project-card__stack">
+                            <span>LangChain</span><span>LlamaIndex</span><span>Ragas</span><span>ChromaDB</span>
+                        </div>
+                    </div>
+
+                    <div class="project-card" data-category="agents">
+                        <div class="project-card__header">
+                            <i class="fas fa-newspaper project-card__icon"></i>
+                            <div class="project-card__links">
+                                <a href="https://github.com/rajan-sap" target="_blank" rel="noopener noreferrer" aria-label="Code"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                        <h3 class="project-card__title">Multi-Agent Autonomous Newsroom</h3>
+                        <p class="project-card__desc">Multi-agent editorial system (Finder, Writer, Validator, Editor) with stateful feedback loops and critique gates for automated publication readiness.</p>
+                        <div class="project-card__stack">
+                            <span>CrewAI</span><span>LLM</span><span>Agents</span><span>Python</span>
+                        </div>
+                    </div>
+
+                    <div class="project-card" data-category="cv">
+                        <div class="project-card__header">
+                            <i class="fas fa-cloud project-card__icon"></i>
+                            <div class="project-card__links">
+                                <a href="#" aria-label="Demo"><i class="fas fa-external-link-alt"></i></a>
+                                <a href="https://github.com/rajan-sap" target="_blank" rel="noopener noreferrer" aria-label="Code"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                        <h3 class="project-card__title">Noctilucent Cloud Classification</h3>
+                        <p class="project-card__desc">Deep learning classification of noctilucent clouds using lightweight CNNs with Grad-CAM explainability on atmospheric imagery.</p>
+                        <div class="project-card__stack">
+                            <span>PyTorch</span><span>CNN</span><span>Grad-CAM</span><span>OpenCV</span>
+                        </div>
+                    </div>
+
+                    <div class="project-card" data-category="nlp">
+                        <div class="project-card__header">
+                            <i class="fas fa-comment-dots project-card__icon"></i>
+                            <div class="project-card__links">
+                                <a href="#" aria-label="Demo"><i class="fas fa-external-link-alt"></i></a>
+                                <a href="https://github.com/rajan-sap" target="_blank" rel="noopener noreferrer" aria-label="Code"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                        <h3 class="project-card__title">Sentiment Analysis Engine</h3>
+                        <p class="project-card__desc">NLP-based sentiment analysis using LSTM and BiLSTM networks with NLTK for preprocessing and feature extraction.</p>
+                        <div class="project-card__stack">
+                            <span>TensorFlow</span><span>LSTM</span><span>NLTK</span><span>NLP</span>
+                        </div>
+                    </div>
+
+                    <div class="project-card" data-category="cv">
+                        <div class="project-card__header">
+                            <i class="fas fa-car project-card__icon"></i>
+                            <div class="project-card__links">
+                                <a href="#" aria-label="Demo"><i class="fas fa-external-link-alt"></i></a>
+                                <a href="https://github.com/rajan-sap" target="_blank" rel="noopener noreferrer" aria-label="Code"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                        <h3 class="project-card__title">Vehicle Plate Recognition</h3>
+                        <p class="project-card__desc">Automatic number plate detection and OCR recognition using OpenCV image processing pipelines and CNN architectures.</p>
+                        <div class="project-card__stack">
+                            <span>OpenCV</span><span>CNN</span><span>OCR</span><span>Python</span>
+                        </div>
+                    </div>
+
+                    <div class="project-card" data-category="nlp">
+                        <div class="project-card__header">
+                            <i class="fas fa-robot project-card__icon"></i>
+                            <div class="project-card__links">
+                                <a href="https://github.com/rajan-sap" target="_blank" rel="noopener noreferrer" aria-label="Code"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                        <h3 class="project-card__title">AI Chatbot</h3>
+                        <p class="project-card__desc">Context-aware conversational AI with natural language understanding, intent recognition, and dynamic response generation.</p>
+                        <div class="project-card__stack">
+                            <span>Python</span><span>NLP</span><span>ML</span><span>spaCy</span>
+                        </div>
+                    </div>
+
+                    <div class="project-card" data-category="nlp">
+                        <div class="project-card__header">
+                            <i class="fas fa-file-lines project-card__icon"></i>
+                            <div class="project-card__links">
+                                <a href="https://github.com/rajan-sap" target="_blank" rel="noopener noreferrer" aria-label="Code"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                        <h3 class="project-card__title">Resume Parser</h3>
+                        <p class="project-card__desc">Intelligent resume parsing system that extracts structured data from unstructured CV documents using NLP techniques and pattern recognition.</p>
+                        <div class="project-card__stack">
+                            <span>Python</span><span>NLP</span><span>spaCy</span><span>Regex</span>
+                        </div>
+                    </div>
+
+                    <div class="project-card" data-category="web">
+                        <div class="project-card__header">
+                            <i class="fas fa-globe project-card__icon"></i>
+                            <div class="project-card__links">
+                                <a href="#" aria-label="Demo"><i class="fas fa-external-link-alt"></i></a>
+                                <a href="https://github.com/rajan-sap/rajendra-portfolio" target="_blank" rel="noopener noreferrer" aria-label="Code"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                        <h3 class="project-card__title">Portfolio Website</h3>
+                        <p class="project-card__desc">Neural mesh-inspired portfolio with particle canvas, terminal UI, dark mode, and scroll-triggered animations.</p>
+                        <div class="project-card__stack">
+                            <span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>Canvas</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <!-- Projects Section -->
-        <section class="projects section" id="projects">
-            <div class="section-container">
+        <!-- ===== PUBLICATIONS / RESEARCH SECTION ===== -->
+        <section class="section" id="publications">
             <div class="container">
-                <h2 class="section__title">Projects</h2>
-                <span class="section__subtitle">Most Recent Work</span>
-                
-                <div class="projects__filters">
-                    <span class="projects__filter active-filter" data-target="all">All</span>
-                    <span class="projects__filter" data-target="ai">AI/ML</span>
-                    <span class="projects__filter" data-target="research">Research</span>
-                    <span class="projects__filter" data-target="web">Web Dev</span>
-                    <span class="projects__filter" data-target="automation">Automation</span>
-                </div>
-                
-                <div class="projects__container">
-                    <div class="projects__card mix ai research">
-                        <div class="projects__header">
-                            <div class="projects__header-content">
-                            </div>
-                        </div>
-                        <div class="projects__data">
-                            <h3 class="projects__title">Noctilucent Cloud Classification</h3>
-                            <p class="projects__description">Deep learning-based classification system for noctilucent clouds using lightweight CNN architectures and explainability methods.</p>
-                            <div class="projects__buttons">
-                                <a href="#" class="projects__link">
-                                    <i class="fas fa-external-link-alt"></i>
-                                    Demo
-                                </a>
-                                <a href="#" class="projects__link">
-                                    <i class="fab fa-github"></i>
-                                    Code
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="projects__card mix ai">
-                        <div class="projects__header">
-                            <div class="projects__header-content">
-                            </div>
-                        </div>
-                        <div class="projects__data">
-                            <h3 class="projects__title">Sentiment Analysis</h3>
-                            <p class="projects__description">NLP-based sentiment analysis system using LSTM and BiLSTM networks with NLTK for preprocessing and feature extraction.</p>
-                            <div class="projects__buttons">
-                                <a href="#" class="projects__link">
-                                    <i class="fas fa-external-link-alt"></i>
-                                    Demo
-                                </a>
-                                <a href="#" class="projects__link">
-                                    <i class="fab fa-github"></i>
-                                    Code
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="projects__card mix ai">
-                        <div class="projects__header">
-                            <div class="projects__header-content">
-                            </div>
-                        </div>
-                        <div class="projects__data">
-                            <h3 class="projects__title">Vehicle Number Plate Recognition</h3>
-                            <p class="projects__description">Computer vision system for automatic vehicle number plate detection and recognition using OpenCV and CNN architectures.</p>
-                            <div class="projects__buttons">
-                                <a href="#" onclick="alert('Demo will be available soon! This computer vision project is currently in development.')" class="projects__link">
-                                    <i class="fas fa-external-link-alt"></i>
-                                    Demo
-                                </a>
-                                <a href="#" onclick="alert('GitHub repository will be made public soon!')" class="projects__link">
-                                    <i class="fab fa-github"></i>
-                                    Code
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="projects__card mix ai">
-                        <div class="projects__header">
-                            <div class="projects__header-content">
-                            </div>
-                        </div>
-                        <div class="projects__data">
-                            <h3 class="projects__title">Chatbot</h3>
-                            <p class="projects__description">AI-powered chatbot with natural language understanding using machine learning algorithms and NLP techniques.</p>
-                            <div class="projects__buttons">
-                                <a href="#" class="projects__link">
-                                    <i class="fas fa-external-link-alt"></i>
-                                    Demo
-                                </a>
-                                <a href="#" class="projects__link">
-                                    <i class="fab fa-github"></i>
-                                    Code
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+                <h2 class="section__title reveal">
+                    <span class="section__number">05.</span> Research &amp; Publications
+                </h2>
 
-                    <div class="projects__card mix automation">
-                        <div class="projects__header">
-                            <div class="projects__header-content">
-                            </div>
-                        </div>
-                        <div class="projects__data">
-                            <h3 class="projects__title">Mulit-Agent Content Writer</h3>
-                            <p class="projects__description">Collaborative multi-agent system that works autonomously for high-quality content generation.</p>
-                            <div class="projects__buttons">
-                                <a href="#" class="projects__link">
-                                    <i class="fas fa-external-link-alt"></i>
-                                    Demo
-                                </a>
-                                <a href="#" class="projects__link">
-                                    <i class="fab fa-github"></i>
-                                    Code
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="projects__card mix web">
-                        <div class="projects__header">
-                            <div class="projects__header-content">
-                            </div>
-                        </div>
-                        <div class="projects__data">
-                            <h3 class="projects__title">Portfolio Website</h3>
-                            <p class="projects__description">Personal portfolio website showcasing my skills, projects, and experience in AI and machine learning.</p>
-                            <div class="projects__buttons">
-                                <a href="#" class="projects__link">
-                                    <i class="fas fa-external-link-alt"></i>
-                                    Demo
-                                </a>
-                                <a href="https://github.com/rajan-sap/rajendra-portfolio" target="_blank" rel="noopener noreferrer" class="projects__link">
-                                    <i class="fab fa-github"></i>
-                                    Code
-                                </a>
-                            </div>
-                        </div>
+                <div class="publications__grid reveal">
+                    <a href="https://www.mdpi.com/2072-4292/14/10/2306" target="_blank" rel="noopener noreferrer" class="pub-card">
+                        <div class="pub-card__type"><i class="fas fa-file-alt"></i> Journal Paper</div>
+                        <h3 class="pub-card__title">Lightweight CNN-based Classification of Noctilucent Clouds</h3>
+                        <p class="pub-card__meta">Remote Sensing, MDPI &middot; 2022</p>
+                        <p class="pub-card__desc">Implemented lightweight CNN architectures for the classification of NLC images with explainability through Grad-CAM and saliency maps.</p>
+                        <span class="pub-card__link">Read Paper <i class="fas fa-arrow-right"></i></span>
+                    </a>
+
+                    <div class="pub-card">
+                        <div class="pub-card__type"><i class="fas fa-chalkboard-teacher"></i> Conference</div>
+                        <h3 class="pub-card__title">AI-Driven Atmospheric Analysis</h3>
+                        <p class="pub-card__meta">International Conference Presentations</p>
+                        <p class="pub-card__desc">Presented research on applied machine learning techniques for detection and classification of atmospheric phenomena at international conferences.</p>
                     </div>
                 </div>
-            </div>
             </div>
         </section>
 
-        <!-- Contact Section -->
-        <section class="contact section" id="contact">
-            <div class="section-container">
+        <!-- ===== CERTIFICATIONS SECTION ===== -->
+        <section class="section" id="certifications">
             <div class="container">
-                <h2 class="section__title">Contact Me</h2>
-                <span class="section__subtitle">Get In Touch</span>
-                
-                <div class="contact__container">
+                <h2 class="section__title reveal">
+                    <span class="section__number">06.</span> Certifications
+                </h2>
+
+                <div class="certifications__grid reveal">
+                    <div class="cert-card">
+                        <i class="fas fa-certificate cert-card__icon"></i>
+                        <h4 class="cert-card__title">Applied Data Science with Python</h4>
+                        <span class="cert-card__org">University of Michigan</span>
+                    </div>
+                    <div class="cert-card">
+                        <i class="fas fa-certificate cert-card__icon"></i>
+                        <h4 class="cert-card__title">Python for Data Science, AI &amp; Development</h4>
+                        <span class="cert-card__org">IBM / Coursera</span>
+                    </div>
+                    <div class="cert-card">
+                        <i class="fas fa-certificate cert-card__icon"></i>
+                        <h4 class="cert-card__title">Machine Learning Specialization</h4>
+                        <span class="cert-card__org">Stanford / Coursera</span>
+                    </div>
+                    <div class="cert-card">
+                        <i class="fas fa-certificate cert-card__icon"></i>
+                        <h4 class="cert-card__title">Deep Learning and Neural Networks</h4>
+                        <span class="cert-card__org">deeplearning.ai</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== CONTACT SECTION ===== -->
+        <section class="section" id="contact">
+            <div class="container">
+                <h2 class="section__title reveal">
+                    <span class="section__number">07.</span> Get In Touch
+                </h2>
+                <p class="contact__intro reveal">
+                    Interested in collaborating on AI projects or research? Let's connect.
+                </p>
+
+                <div class="contact__grid reveal">
                     <div class="contact__info">
-                        <div class="contact__card">
-                            <i class="fas fa-envelope contact__card-icon"></i>
-                            <h3 class="contact__card-title">Email</h3>
-                            <span class="contact__card-data">sapkota0921@gmail.com</span>
-                            <a href="mailto:sapkota0921@gmail.com" class="contact__button">
-                                Write me <i class="fas fa-arrow-right"></i>
-                            </a>
-                        </div>
-                        
-                        <div class="contact__card">
-                            <i class="fas fa-phone contact__card-icon"></i>
-                            <h3 class="contact__card-title">Phone</h3>
-                            <span class="contact__card-data">+47 40647358</span>
-                            <a href="tel:+4740647358" class="contact__button">
-                                Call me <i class="fas fa-arrow-right"></i>
-                            </a>
-                        </div>
-                        
-                        <div class="contact__card">
-                            <i class="fab fa-linkedin contact__card-icon"></i>
-                            <h3 class="contact__card-title">LinkedIn</h3>
-                            <span class="contact__card-data">Connect with me</span>
-                            <a href="https://linkedin.com/in/rajendra0921" target="_blank" rel="noopener noreferrer" class="contact__button">
-                                Connect <i class="fas fa-arrow-right"></i>
-                            </a>
+                        <a href="mailto:sapkota0921@gmail.com" class="contact-card">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h4>Email</h4>
+                                <span>sapkota0921@gmail.com</span>
+                            </div>
+                            <i class="fas fa-arrow-right contact-card__arrow"></i>
+                        </a>
+                        <a href="tel:+4740647358" class="contact-card">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <h4>Phone</h4>
+                                <span>+47 xxx xx xxx</span>
+                            </div>
+                            <i class="fas fa-arrow-right contact-card__arrow"></i>
+                        </a>
+                        <a href="https://linkedin.com/in/rajendra0921" target="_blank" rel="noopener noreferrer" class="contact-card">
+                            <i class="fab fa-linkedin"></i>
+                            <div>
+                                <h4>LinkedIn</h4>
+                                <span>rajendra0921</span>
+                            </div>
+                            <i class="fas fa-arrow-right contact-card__arrow"></i>
+                        </a>
+                        <a href="https://github.com/rajan-sap" target="_blank" rel="noopener noreferrer" class="contact-card">
+                            <i class="fab fa-github"></i>
+                            <div>
+                                <h4>GitHub</h4>
+                                <span>rajan-sap</span>
+                            </div>
+                            <i class="fas fa-arrow-right contact-card__arrow"></i>
+                        </a>
+                        <div class="contact__location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Oslo, Norway</span>
                         </div>
                     </div>
-                    
+
                     <form class="contact__form" id="contact-form">
-                        <div class="contact__form-div">
-                            <label class="contact__form-tag" for="name">Name</label>
-                            <input type="text" name="name" id="name" placeholder="Insert your name" class="contact__form-input" required>
+                        <div class="form-group">
+                            <input type="text" id="name" name="name" required placeholder=" ">
+                            <label for="name">Your Name</label>
                         </div>
-                        
-                        <div class="contact__form-div">
-                            <label class="contact__form-tag" for="email">Email</label>
-                            <input type="email" name="email" id="email" placeholder="Insert your email" class="contact__form-input" required>
+                        <div class="form-group">
+                            <input type="email" id="email" name="email" required placeholder=" ">
+                            <label for="email">Your Email</label>
                         </div>
-                        
-                        <div class="contact__form-div contact__form-area">
-                            <label class="contact__form-tag" for="message">Message</label>
-                            <textarea name="message" id="message" cols="30" rows="10" placeholder="Write your message" class="contact__form-input" required></textarea>
+                        <div class="form-group">
+                            <textarea id="message" name="message" rows="5" required placeholder=" "></textarea>
+                            <label for="message">Message</label>
                         </div>
-                        
-                        <button type="submit" class="button contact__form-button">
-                            Send Message
-                            <i class="fas fa-paper-plane"></i>
+                        <button type="submit" class="btn btn--primary btn--full">
+                            <i class="fas fa-paper-plane"></i> Send Message
                         </button>
-                        
-                        <div class="contact__message" id="contact-message" role="status" aria-live="polite"></div>
+                        <div class="contact__status" id="contact-status"></div>
                     </form>
                 </div>
             </div>
-            </div>
         </section>
+
     </main>
 
-    <!-- Footer -->
+    <!-- ===== FOOTER ===== -->
     <footer class="footer">
-        <div class="footer__container container">
-            <h1 class="footer__title">Rajendra Sapkota</h1>
-            
-            <ul class="footer__list">
-                <li>
-                    <a href="#home" class="footer__link">Home</a>
-                </li>
-                <li>
-                    <a href="#experience" class="footer__link">Experience</a>
-                </li>
-                <li>
-                    <a href="#skills" class="footer__link">Skills</a>
-                </li>
-                <li>
-                    <a href="#projects" class="footer__link">Projects</a>
-                </li>
-                <li>
-                    <a href="#contact" class="footer__link">Contact</a>
-                </li>
-            </ul>
-            
-            <ul class="footer__social">
-                <a href="https://github.com/rajan-sap" target="_blank" rel="noopener noreferrer" class="footer__social-link">
-                    <i class="fab fa-github"></i>
-                </a>
-                <a href="https://linkedin.com/in/rajendra0921" target="_blank" rel="noopener noreferrer" class="footer__social-link">
-                    <i class="fab fa-linkedin"></i>
-                </a>
-            </ul>
-            
-            <span class="footer__copy">
-                &#169; 2025 Rajendra Sapkota. All rights reserved.
+        <div class="container footer__inner">
+            <span class="footer__logo">
+                <span class="logo__bracket">&lt;</span>RS<span class="logo__bracket">/&gt;</span>
             </span>
+            <p class="footer__copy">&copy; 2026 Rajendra Sapkota. Built with passion &amp; code.</p>
+            <div class="footer__social">
+                <a href="https://github.com/rajan-sap" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://linkedin.com/in/rajendra0921" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            </div>
         </div>
     </footer>
 
-    <!-- Scroll Up Button -->
-    <a href="#" class="scrollup" id="scroll-up">
-        <i class="fas fa-arrow-up scrollup__icon"></i>
-    </a>
+    <!-- ===== SCROLL TO TOP ===== -->
+    <button class="scroll-top" id="scroll-top" aria-label="Scroll to top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
 
-    <!-- Custom JavaScript -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-     <script src="script.js"></script>
-  </body>
+    <script src="script.js"></script>
+</body>
 </html>
