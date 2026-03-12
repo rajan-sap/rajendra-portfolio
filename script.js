@@ -383,4 +383,69 @@
   `;
   document.head.appendChild(style);
 
+
+  // ===== SKILL EDIT MODE =====
+  const editBtn = document.getElementById('editSkillsBtn');
+  const skillsSection = document.getElementById('skills');
+
+  if (editBtn && skillsSection) {
+    // Add delete buttons to all existing chips
+    function addDeleteBtns() {
+      skillsSection.querySelectorAll('.skill-chip').forEach(chip => {
+        if (!chip.querySelector('.chip-delete')) {
+          const del = document.createElement('span');
+          del.className = 'chip-delete';
+          del.innerHTML = '&times;';
+          del.addEventListener('click', () => chip.remove());
+          chip.appendChild(del);
+        }
+      });
+    }
+
+    addDeleteBtns();
+
+    // Toggle edit mode
+    editBtn.addEventListener('click', () => {
+      editBtn.classList.toggle('active');
+      skillsSection.classList.toggle('skills--editing');
+      const isEditing = skillsSection.classList.contains('skills--editing');
+      editBtn.innerHTML = isEditing
+        ? '<i class="fas fa-check"></i>'
+        : '<i class="fas fa-pen"></i>';
+    });
+
+    // Add skill on button click or Enter key
+    skillsSection.querySelectorAll('.skill-add-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const row = btn.closest('.skill-add-row');
+        const input = row.querySelector('.skill-add-input');
+        addSkill(input);
+      });
+    });
+
+    skillsSection.querySelectorAll('.skill-add-input').forEach(input => {
+      input.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') addSkill(input);
+      });
+    });
+
+    function addSkill(input) {
+      const value = input.value.trim();
+      if (!value) return;
+      const group = input.closest('.skill-group');
+      const items = group.querySelector('.skill-group__items');
+      const chip = document.createElement('div');
+      chip.className = 'skill-chip';
+      chip.textContent = value;
+      const del = document.createElement('span');
+      del.className = 'chip-delete';
+      del.innerHTML = '&times;';
+      del.addEventListener('click', () => chip.remove());
+      chip.appendChild(del);
+      items.appendChild(chip);
+      input.value = '';
+      input.focus();
+    }
+  }
+
 })();

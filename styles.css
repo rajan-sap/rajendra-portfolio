@@ -942,6 +942,101 @@ strong {
   font-weight: 600;
 }
 
+/* Skill Edit Mode */
+.edit-skills-btn {
+  margin-left: auto;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text-muted);
+  padding: 6px 10px;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.edit-skills-btn:hover,
+.edit-skills-btn.active {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: var(--chip-accent-bg);
+}
+
+.skill-chip .chip-delete {
+  display: none;
+  margin-left: 6px;
+  font-size: 0.65rem;
+  color: inherit;
+  opacity: 0.6;
+  cursor: pointer;
+  transition: opacity var(--transition);
+}
+
+.skill-chip .chip-delete:hover {
+  opacity: 1;
+  color: #f87171;
+}
+
+.skills--editing .skill-chip .chip-delete {
+  display: inline;
+}
+
+.skills--editing .skill-chip {
+  padding-right: 8px;
+}
+
+.skill-add-row {
+  display: none;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-top: var(--space-md);
+}
+
+.skills--editing .skill-add-row {
+  display: flex;
+}
+
+.skill-add-input {
+  flex: 1;
+  padding: 6px 12px;
+  font-size: 0.8rem;
+  font-family: var(--font-mono);
+  background: var(--bg-primary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  color: var(--text-primary);
+  outline: none;
+  transition: border-color var(--transition);
+}
+
+.skill-add-input:focus {
+  border-color: var(--accent);
+}
+
+.skill-add-input::placeholder {
+  color: var(--text-muted);
+}
+
+.skill-add-btn {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  font-size: 0.75rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition);
+}
+
+.skill-add-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 12px var(--accent-glow);
+}
+
 
 /* ===== PROJECTS ===== */
 .projects__filters {
@@ -1145,6 +1240,9 @@ strong {
   padding: var(--space-xl);
   text-align: center;
   transition: all var(--transition);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .cert-card:hover {
@@ -1170,6 +1268,26 @@ strong {
   font-size: 0.8rem;
   color: var(--text-muted);
   font-family: var(--font-mono);
+}
+
+.cert-card__link {
+  display: block;
+  margin-top: auto;
+  padding-top: var(--space-lg);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--accent);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+.cert-card__link:hover {
+  text-decoration: underline;
+}
+
+.cert-card__link i {
+  font-size: 0.7rem;
+  margin-left: 4px;
 }
 
 @media (max-width: 1024px) {

@@ -14,7 +14,7 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?v=4">
 </head>
 <body>
 
@@ -145,8 +145,8 @@
                             <span class="stat__label">Projects Delivered</span>
                         </div>
                         <div class="stat-card">
-                            <span class="stat__number" data-target="5">0</span><span class="stat__plus">+</span>
-                            <span class="stat__label">Publications</span>
+                            <span class="stat__number" data-target="2">0</span><span class="stat__plus">+</span>
+                            <span class="stat__label">Years in RAG &amp; Agents</span>
                         </div>
                         <div class="stat-card">
                             <span class="stat__number" data-target="6">0</span><span class="stat__plus">x</span>
@@ -199,7 +199,7 @@
                                 Formulated novel research objectives for automated analysis of atmospheric imagery using deep learning. 
                                 Designed lightweight CNN architectures achieving 98%+ classification accuracy with rigorous cross-validation 
                                 and uncertainty quantification. Applied unsupervised learning (clustering, PCA) to discover latent patterns in 
-                                high-dimensional time series data. Built automated data quality pipelines and anomaly detection systems. 
+                                high-dimensional image data. Built automated data quality pipelines and anomaly detection systems. 
                                 Developed model interpretability frameworks using Grad-CAM and saliency maps. Authored peer-reviewed 
                                 publications and presented at international conferences.
                             </p>
@@ -279,6 +279,7 @@
             <div class="container">
                 <h2 class="section__title reveal">
                     <span class="section__number">03.</span> Tech Stack
+                    <button class="edit-skills-btn" id="editSkillsBtn" title="Edit skills"><i class="fas fa-pen"></i></button>
                 </h2>
 
                 <div class="skills__grid reveal">
@@ -293,81 +294,10 @@
                             <div class="skill-chip">RAG Pipelines</div>
                             <div class="skill-chip">AI Agents</div>
                             <div class="skill-chip">LLM Fine-tuning</div>
-                            <div class="skill-chip">Object Detection</div>
-                            <div class="skill-chip">Instance Segmentation</div>
-                            <div class="skill-chip">Image Analysis</div>
-                            <div class="skill-chip">Data Science</div>
-                            <div class="skill-chip">Feature Engineering</div>
                         </div>
-                    </div>
-
-                    <div class="skill-group">
-                        <h3 class="skill-group__title"><i class="fas fa-code"></i> Languages</h3>
-                        <div class="skill-group__items">
-                            <div class="skill-chip skill-chip--accent">Python</div>
-                            <div class="skill-chip">TypeScript</div>
-                            <div class="skill-chip">JavaScript</div>
-                            <div class="skill-chip">SQL</div>
-                            <div class="skill-chip">Node.js</div>
-                            <div class="skill-chip">PHP</div>
-                            <div class="skill-chip">Bash</div>
-                            <div class="skill-chip">HTML/CSS</div>
-                        </div>
-                    </div>
-
-                    <div class="skill-group">
-                        <h3 class="skill-group__title"><i class="fas fa-layer-group"></i> Frameworks &amp; Libraries</h3>
-                        <div class="skill-group__items">
-                            <div class="skill-chip skill-chip--accent">PyTorch</div>
-                            <div class="skill-chip skill-chip--accent">TensorFlow</div>
-                            <div class="skill-chip">Keras</div>
-                            <div class="skill-chip">Scikit-learn</div>
-                            <div class="skill-chip">XGBoost</div>
-                            <div class="skill-chip">OpenCV</div>
-                            <div class="skill-chip">Transformers</div>
-                            <div class="skill-chip">spaCy</div>
-                            <div class="skill-chip">NLTK</div>
-                            <div class="skill-chip">NumPy</div>
-                            <div class="skill-chip">Pandas</div>
-                            <div class="skill-chip">Polars</div>
-                            <div class="skill-chip">SciPy</div>
-                            <div class="skill-chip">FastAPI</div>
-                            <div class="skill-chip">Flask</div>
-                            <div class="skill-chip">Django</div>
-                            <div class="skill-chip">Streamlit</div>
-                        </div>
-                    </div>
-
-                    <div class="skill-group">
-                        <h3 class="skill-group__title"><i class="fas fa-tools"></i> MLOps &amp; Cloud</h3>
-                        <div class="skill-group__items">
-                            <div class="skill-chip">Docker</div>
-                            <div class="skill-chip">Git</div>
-                            <div class="skill-chip">CI/CD</div>
-                            <div class="skill-chip">MLflow</div>
-                            <div class="skill-chip">Weights &amp; Biases</div>
-                            <div class="skill-chip">AWS SageMaker</div>
-                            <div class="skill-chip">GCP Vertex AI</div>
-                            <div class="skill-chip">Firebase</div>
-                            <div class="skill-chip">Linux</div>
-                            <div class="skill-chip">GPU Programming</div>
-                            <div class="skill-chip">APIs</div>
-                        </div>
-                    </div>
-
-                    <div class="skill-group">
-                        <h3 class="skill-group__title"><i class="fas fa-chart-bar"></i> Data &amp; Visualization</h3>
-                        <div class="skill-group__items">
-                            <div class="skill-chip">Matplotlib</div>
-                            <div class="skill-chip">Seaborn</div>
-                            <div class="skill-chip">Plotly</div>
-                            <div class="skill-chip">Tableau</div>
-                            <div class="skill-chip">PostgreSQL</div>
-                            <div class="skill-chip">MongoDB</div>
-                            <div class="skill-chip">MySQL</div>
-                            <div class="skill-chip">ChromaDB</div>
-                            <div class="skill-chip">Neo4j</div>
-                            <div class="skill-chip">Hypothesis Testing</div>
+                        <div class="skill-add-row">
+                            <input type="text" class="skill-add-input" placeholder="Add skill...">
+                            <button class="skill-add-btn"><i class="fas fa-plus"></i></button>
                         </div>
                     </div>
 
@@ -380,8 +310,76 @@
                             <div class="skill-chip skill-chip--accent">RAG / Ragas</div>
                             <div class="skill-chip">n8n</div>
                             <div class="skill-chip">Multi-Agent Systems</div>
-                            <div class="skill-chip">LLM Fine-tuning</div>
-                            <div class="skill-chip">Workflow Orchestration</div>
+                        </div>
+                        <div class="skill-add-row">
+                            <input type="text" class="skill-add-input" placeholder="Add skill...">
+                            <button class="skill-add-btn"><i class="fas fa-plus"></i></button>
+                        </div>
+                    </div>
+
+                    <div class="skill-group">
+                        <h3 class="skill-group__title"><i class="fas fa-code"></i> Languages</h3>
+                        <div class="skill-group__items">
+                            <div class="skill-chip skill-chip--accent">Python</div>
+                            <div class="skill-chip">SQL</div>
+                            <div class="skill-chip">JavaScript</div>
+                            <div class="skill-chip">TypeScript</div>
+                            <div class="skill-chip">Bash</div>
+                        </div>
+                        <div class="skill-add-row">
+                            <input type="text" class="skill-add-input" placeholder="Add skill...">
+                            <button class="skill-add-btn"><i class="fas fa-plus"></i></button>
+                        </div>
+                    </div>
+
+                    <div class="skill-group">
+                        <h3 class="skill-group__title"><i class="fas fa-layer-group"></i> Frameworks &amp; Libraries</h3>
+                        <div class="skill-group__items">
+                            <div class="skill-chip skill-chip--accent">PyTorch</div>
+                            <div class="skill-chip skill-chip--accent">TensorFlow</div>
+                            <div class="skill-chip">Scikit-learn</div>
+                            <div class="skill-chip">OpenCV</div>
+                            <div class="skill-chip">Transformers</div>
+                            <div class="skill-chip">NumPy</div>
+                            <div class="skill-chip">Pandas</div>
+                            <div class="skill-chip">FastAPI</div>
+                            <div class="skill-chip">Streamlit</div>
+                        </div>
+                        <div class="skill-add-row">
+                            <input type="text" class="skill-add-input" placeholder="Add skill...">
+                            <button class="skill-add-btn"><i class="fas fa-plus"></i></button>
+                        </div>
+                    </div>
+
+                    <div class="skill-group">
+                        <h3 class="skill-group__title"><i class="fas fa-tools"></i> MLOps &amp; Cloud</h3>
+                        <div class="skill-group__items">
+                            <div class="skill-chip">Docker</div>
+                            <div class="skill-chip">Git</div>
+                            <div class="skill-chip">CI/CD</div>
+                            <div class="skill-chip">MLflow</div>
+                            <div class="skill-chip">AWS</div>
+                            <div class="skill-chip">GCP</div>
+                            <div class="skill-chip">Linux</div>
+                        </div>
+                        <div class="skill-add-row">
+                            <input type="text" class="skill-add-input" placeholder="Add skill...">
+                            <button class="skill-add-btn"><i class="fas fa-plus"></i></button>
+                        </div>
+                    </div>
+
+                    <div class="skill-group">
+                        <h3 class="skill-group__title"><i class="fas fa-database"></i> Data &amp; Databases</h3>
+                        <div class="skill-group__items">
+                            <div class="skill-chip">PostgreSQL</div>
+                            <div class="skill-chip">MongoDB</div>
+                            <div class="skill-chip">ChromaDB</div>
+                            <div class="skill-chip">Neo4j</div>
+                            <div class="skill-chip">Plotly</div>
+                        </div>
+                        <div class="skill-add-row">
+                            <input type="text" class="skill-add-input" placeholder="Add skill...">
+                            <button class="skill-add-btn"><i class="fas fa-plus"></i></button>
                         </div>
                     </div>
                 </div>
@@ -451,7 +449,6 @@
                         <div class="project-card__header">
                             <i class="fas fa-cloud project-card__icon"></i>
                             <div class="project-card__links">
-                                <a href="#" aria-label="Demo"><i class="fas fa-external-link-alt"></i></a>
                                 <a href="https://github.com/rajan-sap" target="_blank" rel="noopener noreferrer" aria-label="Code"><i class="fab fa-github"></i></a>
                             </div>
                         </div>
@@ -466,7 +463,6 @@
                         <div class="project-card__header">
                             <i class="fas fa-comment-dots project-card__icon"></i>
                             <div class="project-card__links">
-                                <a href="#" aria-label="Demo"><i class="fas fa-external-link-alt"></i></a>
                                 <a href="https://github.com/rajan-sap" target="_blank" rel="noopener noreferrer" aria-label="Code"><i class="fab fa-github"></i></a>
                             </div>
                         </div>
@@ -481,7 +477,6 @@
                         <div class="project-card__header">
                             <i class="fas fa-car project-card__icon"></i>
                             <div class="project-card__links">
-                                <a href="#" aria-label="Demo"><i class="fas fa-external-link-alt"></i></a>
                                 <a href="https://github.com/rajan-sap" target="_blank" rel="noopener noreferrer" aria-label="Code"><i class="fab fa-github"></i></a>
                             </div>
                         </div>
@@ -524,7 +519,6 @@
                         <div class="project-card__header">
                             <i class="fas fa-globe project-card__icon"></i>
                             <div class="project-card__links">
-                                <a href="#" aria-label="Demo"><i class="fas fa-external-link-alt"></i></a>
                                 <a href="https://github.com/rajan-sap/rajendra-portfolio" target="_blank" rel="noopener noreferrer" aria-label="Code"><i class="fab fa-github"></i></a>
                             </div>
                         </div>
@@ -556,9 +550,9 @@
 
                     <div class="pub-card">
                         <div class="pub-card__type"><i class="fas fa-chalkboard-teacher"></i> Conference</div>
-                        <h3 class="pub-card__title">AI-Driven Atmospheric Analysis</h3>
-                        <p class="pub-card__meta">International Conference Presentations</p>
-                        <p class="pub-card__desc">Presented research on applied machine learning techniques for detection and classification of atmospheric phenomena at international conferences.</p>
+                        <h3 class="pub-card__title">Noctilucent Clouds Analysis with Machine Learning</h3>
+                        <p class="pub-card__meta">NORA &mdash; Norwegian Artificial Intelligence Research Consortium &middot; Oslo, 2021</p>
+                        <p class="pub-card__desc">Presented research on applied machine learning techniques for detection and classification of noctilucent clouds in atmospheric imagery.</p>
                     </div>
                 </div>
             </div>
@@ -576,21 +570,25 @@
                         <i class="fas fa-certificate cert-card__icon"></i>
                         <h4 class="cert-card__title">Applied Data Science with Python</h4>
                         <span class="cert-card__org">University of Michigan</span>
+                        <a href="https://www.linkedin.com/in/rajendra0921/details/certifications/" target="_blank" rel="noopener noreferrer" class="cert-card__link">View Certificate <i class="fas fa-external-link-alt"></i></a>
                     </div>
                     <div class="cert-card">
                         <i class="fas fa-certificate cert-card__icon"></i>
                         <h4 class="cert-card__title">Python for Data Science, AI &amp; Development</h4>
                         <span class="cert-card__org">IBM / Coursera</span>
+                        <a href="https://www.linkedin.com/in/rajendra0921/details/certifications/" target="_blank" rel="noopener noreferrer" class="cert-card__link">View Certificate <i class="fas fa-external-link-alt"></i></a>
                     </div>
                     <div class="cert-card">
                         <i class="fas fa-certificate cert-card__icon"></i>
                         <h4 class="cert-card__title">Machine Learning Specialization</h4>
                         <span class="cert-card__org">Stanford / Coursera</span>
+                        <a href="https://www.linkedin.com/in/rajendra0921/details/certifications/" target="_blank" rel="noopener noreferrer" class="cert-card__link">View Certificate <i class="fas fa-external-link-alt"></i></a>
                     </div>
                     <div class="cert-card">
                         <i class="fas fa-certificate cert-card__icon"></i>
                         <h4 class="cert-card__title">Deep Learning and Neural Networks</h4>
                         <span class="cert-card__org">deeplearning.ai</span>
+                        <a href="https://www.linkedin.com/in/rajendra0921/details/certifications/" target="_blank" rel="noopener noreferrer" class="cert-card__link">View Certificate <i class="fas fa-external-link-alt"></i></a>
                     </div>
                 </div>
             </div>
