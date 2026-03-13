@@ -62,8 +62,8 @@
     }
 
     draw() {
-      const alpha = isDark() ? 0.2 : 0.25;
-      const color = isDark() ? `rgba(59, 130, 246, ${alpha})` : `rgba(59, 130, 246, ${alpha})`;
+      const alpha = isDark() ? 0.4 : 0.35;
+      const color = isDark() ? `rgba(0, 212, 255, ${alpha})` : `rgba(2, 132, 199, ${alpha})`;
       ctx.beginPath();
       ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
       ctx.fillStyle = color;
@@ -79,8 +79,8 @@
   }
 
   function drawConnections() {
-    const lineAlpha = isDark() ? 0.05 : 0.04;
-    const lineColor = isDark() ? '59, 130, 246' : '59, 130, 246';
+    const lineAlpha = isDark() ? 0.06 : 0.04;
+    const lineColor = isDark() ? '0, 212, 255' : '2, 132, 199';
     for (let i = 0; i < particles.length; i++) {
       for (let j = i + 1; j < particles.length; j++) {
         const dx = particles[i].x - particles[j].x;
@@ -152,7 +152,7 @@
     await new Promise(r => setTimeout(r, 600));
     await typeText(nameEl, 'Rajendra Sapkota', 50);
     await new Promise(r => setTimeout(r, 300));
-    await typeText(roleEl, 'ML/AI Engineer & Consultant', 45);
+    await typeText(roleEl, 'AI/ML Engineer and RAG Specialist', 45);
   }
 
   runTypingSequence();
