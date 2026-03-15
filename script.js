@@ -1,7 +1,7 @@
 /* ========================================================
    NEURAL MESH — Portfolio Scripts
-   Particle canvas, typing effects, scroll animations,
-   theme toggle, project filters, stat counters
+   Particle canvas, scroll animations, theme toggle, 
+   project filters, stat counters
    ======================================================== */
 
 (function () {
@@ -126,36 +126,6 @@
   resizeCanvas();
   initParticles();
   animateCanvas();
-
-
-  // ===== TYPING EFFECT =====
-  function typeText(element, text, speed = 60) {
-    return new Promise(resolve => {
-      let i = 0;
-      element.textContent = '';
-      const interval = setInterval(() => {
-        element.textContent += text[i];
-        i++;
-        if (i >= text.length) {
-          clearInterval(interval);
-          resolve();
-        }
-      }, speed);
-    });
-  }
-
-  async function runTypingSequence() {
-    const nameEl = document.getElementById('typing-name');
-    const roleEl = document.getElementById('typing-role');
-    if (!nameEl || !roleEl) return;
-
-    await new Promise(r => setTimeout(r, 600));
-    await typeText(nameEl, 'Rajendra Sapkota', 50);
-    await new Promise(r => setTimeout(r, 300));
-    await typeText(roleEl, 'AI/ML Engineer and RAG Specialist', 45);
-  }
-
-  runTypingSequence();
 
 
   // ===== NAVIGATION =====
@@ -296,7 +266,10 @@
       const filter = btn.getAttribute('data-filter');
 
       projectCards.forEach(card => {
-        if (filter === 'all' || card.getAttribute('data-category') === filter) {
+        const cardCategories = card.getAttribute('data-category') || '';
+        const matches = filter === 'all' || cardCategories.includes(filter);
+        
+        if (matches) {
           card.classList.remove('hidden');
           card.style.animation = 'fadeInUp 0.4s ease forwards';
         } else {
@@ -323,66 +296,6 @@
   });
 
 
-  // ===== CONTACT FORM =====
-  const contactForm = document.getElementById('contact-form');
-  const contactStatus = document.getElementById('contact-status');
-
-  // EmailJS configuration - Replace with your credentials
-  // Get these from https://www.emailjs.com/
-  const EMAILJS_PUBLIC_KEY = 'YOUR_PUBLIC_KEY';
-  const EMAILJS_SERVICE_ID = 'YOUR_SERVICE_ID';
-  const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID';
-
-  if (contactForm) {
-    contactForm.addEventListener('submit', async (e) => {
-      e.preventDefault();
-
-      const name = contactForm.querySelector('#name').value.trim();
-      const email = contactForm.querySelector('#email').value.trim();
-      const message = contactForm.querySelector('#message').value.trim();
-
-      if (!name || !email || !message) {
-        contactStatus.textContent = 'Please fill in all fields.';
-        contactStatus.className = 'contact__status error';
-        return;
-      }
-
-      contactStatus.textContent = 'Sending...';
-      contactStatus.className = 'contact__status';
-
-      try {
-        // Initialize EmailJS (replace with your public key)
-        if (typeof emailjs !== 'undefined') {
-          await emailjs.sendForm(
-            EMAILJS_SERVICE_ID,
-            EMAILJS_TEMPLATE_ID,
-            contactForm,
-            EMAILJS_PUBLIC_KEY
-          );
-          contactStatus.textContent = 'Message sent successfully!';
-          contactStatus.className = 'contact__status success';
-          contactForm.reset();
-        } else {
-          // Fallback if EmailJS not loaded
-          contactStatus.textContent = 'EmailJS not loaded. Please try again.';
-          contactStatus.className = 'contact__status error';
-          return;
-        }
-      } catch (error) {
-        console.error('EmailJS Error:', error);
-        contactStatus.textContent = 'Failed to send message. Please try again.';
-        contactStatus.className = 'contact__status error';
-        return;
-      }
-
-      setTimeout(() => {
-        contactStatus.textContent = '';
-        contactStatus.className = 'contact__status';
-      }, 4000);
-    });
-  }
-
-
   // ===== SMOOTH SCROLL FOR ANCHOR LINKS =====
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
@@ -406,70 +319,5 @@
     }
   `;
   document.head.appendChild(style);
-
-
-  // ===== SKILL EDIT MODE =====
-  const editBtn = document.getElementById('editSkillsBtn');
-  const skillsSection = document.getElementById('skills');
-
-  if (editBtn && skillsSection) {
-    // Add delete buttons to all existing chips
-    function addDeleteBtns() {
-      skillsSection.querySelectorAll('.skill-chip').forEach(chip => {
-        if (!chip.querySelector('.chip-delete')) {
-          const del = document.createElement('span');
-          del.className = 'chip-delete';
-          del.innerHTML = '&times;';
-          del.addEventListener('click', () => chip.remove());
-          chip.appendChild(del);
-        }
-      });
-    }
-
-    addDeleteBtns();
-
-    // Toggle edit mode
-    editBtn.addEventListener('click', () => {
-      editBtn.classList.toggle('active');
-      skillsSection.classList.toggle('skills--editing');
-      const isEditing = skillsSection.classList.contains('skills--editing');
-      editBtn.innerHTML = isEditing
-        ? '<i class="fas fa-check"></i>'
-        : '<i class="fas fa-pen"></i>';
-    });
-
-    // Add skill on button click or Enter key
-    skillsSection.querySelectorAll('.skill-add-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const row = btn.closest('.skill-add-row');
-        const input = row.querySelector('.skill-add-input');
-        addSkill(input);
-      });
-    });
-
-    skillsSection.querySelectorAll('.skill-add-input').forEach(input => {
-      input.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter') addSkill(input);
-      });
-    });
-
-    function addSkill(input) {
-      const value = input.value.trim();
-      if (!value) return;
-      const group = input.closest('.skill-group');
-      const items = group.querySelector('.skill-group__items');
-      const chip = document.createElement('div');
-      chip.className = 'skill-chip';
-      chip.textContent = value;
-      const del = document.createElement('span');
-      del.className = 'chip-delete';
-      del.innerHTML = '&times;';
-      del.addEventListener('click', () => chip.remove());
-      chip.appendChild(del);
-      items.appendChild(chip);
-      input.value = '';
-      input.focus();
-    }
-  }
 
 })();
