@@ -310,24 +310,28 @@ body > * {
   background: none;
   border: 1px solid var(--border);
   color: var(--text-secondary);
-  padding: 8px 12px;
+  padding: 8px 14px;
   height: 40px;
   border-radius: var(--radius-sm);
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
+  gap: 8px;
   font-size: 0.85rem;
   font-weight: 500;
   transition: all var(--transition);
+  white-space: nowrap;
 }
 
 .theme-toggle .theme-label {
   display: none;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 640px) {
+  .theme-toggle {
+    padding: 8px 16px;
+  }
   .theme-toggle .theme-label {
     display: inline;
   }
