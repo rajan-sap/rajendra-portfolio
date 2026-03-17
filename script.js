@@ -189,10 +189,13 @@
   function setTheme(theme) {
     document.documentElement.setAttribute('data-theme', theme);
     localStorage.setItem('portfolio-theme', theme);
+    const themeLabel = document.querySelector('.theme-label');
     if (theme === 'dark') {
       themeIcon.className = 'fas fa-sun';
+      if (themeLabel) themeLabel.textContent = 'Light';
     } else {
       themeIcon.className = 'fas fa-moon';
+      if (themeLabel) themeLabel.textContent = 'Dark';
     }
   }
 
@@ -231,6 +234,8 @@
       if (entry.isIntersecting) {
         const el = entry.target;
         const target = parseInt(el.getAttribute('data-target'), 10);
+        // Skip if no valid data-target
+        if (!target || isNaN(target)) return;
         animateCounter(el, target);
         statObserver.unobserve(el);
       }
