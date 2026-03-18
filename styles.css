@@ -591,9 +591,9 @@ body > * {
 .hero__subtitle {
   color: var(--accent);
   font-size: 1rem;
-  font-weight: 600;
+  font-weight: 400;
   letter-spacing: 0.05em;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   margin-bottom: var(--space-md);
   opacity: 0.8;
 }
