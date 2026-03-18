@@ -69,7 +69,7 @@
 
   --timeline-line: rgba(184, 134, 11, 0.1);
   --timeline-marker: #b8860b;
-  --timeline-marker-edu: #9b4d96;
+  --timeline-marker-edu: #8b4513;
 
   --chip-bg: rgba(245, 158, 11, 0.06);
   --chip-border: rgba(245, 158, 11, 0.15);
@@ -95,13 +95,13 @@
   --text-secondary: #3d3d3d;
   --text-muted: #5a5a5a;
 
-  --accent: #0284c7;
-  --accent-alt: #7c3aed;
-  --accent-glow: rgba(2, 132, 199, 0.1);
-  --accent-glow-strong: rgba(2, 132, 199, 0.2);
+  --accent: #a0522d;
+  --accent-alt: #8b4513;
+  --accent-glow: rgba(160, 82, 45, 0.1);
+  --accent-glow-strong: rgba(160, 82, 45, 0.2);
 
   --border: rgba(0, 0, 0, 0.1);
-  --border-hover: rgba(2, 132, 199, 0.4);
+  --border-hover: rgba(160, 82, 45, 0.4);
 
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
   --shadow-md: 0 8px 32px rgba(0, 0, 0, 0.08);
@@ -110,19 +110,19 @@
   --terminal-bg: #2d2d2d;
   --terminal-border: #404040;
   --terminal-text: #e5e5e5;
-  --terminal-prompt: #38bdf8;
-  --terminal-cmd: #7dd3fc;
+  --terminal-prompt: #cd853f;
+  --terminal-cmd: #deb887;
 
-  --timeline-line: rgba(2, 132, 199, 0.2);
-  --timeline-marker: #0284c7;
-  --timeline-marker-edu: #7c3aed;
+  --timeline-line: rgba(160, 82, 45, 0.2);
+  --timeline-marker: #a0522d;
+  --timeline-marker-edu: #8b4513;
 
-  --chip-bg: rgba(2, 132, 199, 0.08);
-  --chip-border: rgba(2, 132, 199, 0.22);
-  --chip-text: #0369a1;
-  --chip-accent-bg: rgba(2, 132, 199, 0.12);
-  --chip-accent-border: rgba(2, 132, 199, 0.35);
-  --chip-accent-text: #0284c7;
+  --chip-bg: rgba(160, 82, 45, 0.08);
+  --chip-border: rgba(160, 82, 45, 0.22);
+  --chip-text: #8b4513;
+  --chip-accent-bg: rgba(160, 82, 45, 0.12);
+  --chip-accent-border: rgba(160, 82, 45, 0.35);
+  --chip-accent-text: #a0522d;
 
   --scrollbar-track: #f5f4f2;
   --scrollbar-thumb: #d4d3d1;
@@ -1012,7 +1012,7 @@ body > * {
 
 .timeline__item:hover .timeline__marker--edu {
   background: var(--timeline-marker-edu);
-  box-shadow: 0 0 12px rgba(124, 58, 237, 0.35);
+  box-shadow: 0 0 12px rgba(139, 69, 19, 0.35);
 }
 
 .timeline__card {
@@ -1817,3 +1817,4 @@ body > * {
     padding: var(--space-lg);
   }
 }
+
